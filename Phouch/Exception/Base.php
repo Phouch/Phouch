@@ -2,6 +2,6 @@
 
 namespace Phouch\Exception;
 
-class Base {
+class Base extends \Exception {
 
 }
