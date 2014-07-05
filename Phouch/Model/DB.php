@@ -2,6 +2,6 @@
 
 namespace Phouch\Model;
 
-class DB {
+class DB extends Base {
 
 }
