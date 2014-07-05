@@ -2,6 +2,6 @@
 
 namespace Phouch\Model;
 
-class Document {
+class Document extends Base {
 
 }
