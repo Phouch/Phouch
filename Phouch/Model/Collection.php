@@ -2,6 +2,6 @@
 
 namespace Phouch\Model;
 
-class Collection {
+class Collection extends Base {
 
 }
