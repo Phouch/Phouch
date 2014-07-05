@@ -2,7 +2,7 @@
 
 namespace Phouch\Model;
 
-abstract class Base {
+abstract class Base implements Model{
   public function create(){}
   public function store(){}
   public function remove(){}
