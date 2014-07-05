@@ -2,6 +2,6 @@
 
 namespace Phouch\Model;
 
-class Base {
+abstract class Base {
 
 }
