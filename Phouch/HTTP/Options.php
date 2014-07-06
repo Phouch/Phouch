@@ -21,7 +21,7 @@ class Options {
     try {
       if(!ctype_digit($port)) throw new \Phouch\Exception\HTTP\Port($port);
       $this->port = $port;
-    } catch (\Phouch\Exception\HTTP\Port $invalidPortException ){
+    } catch (\Phouch\Exception\HTTP\Port $invalidPortException){
       echo $invalidPortException->getMessage();
     }
     return $this;
