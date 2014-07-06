@@ -43,6 +43,4 @@ class Options {
   public function getTransport(){
     return $this->transport;
   }
-
-
 }
