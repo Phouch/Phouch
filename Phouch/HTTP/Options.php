@@ -4,6 +4,9 @@ namespace Phouch\HTTP;
 
 class Options {
 
+  const TRANSPORT_METHOD_HTTP = 'http';
+  const TRANSPORT_METHOD_SECURE = 'https';
+
   private $host;
   private $port;
   private $transport;

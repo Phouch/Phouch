@@ -26,9 +26,6 @@ namespace Phouch\HTTP;
 
 class Target {
 
-  const TRANSPORT_METHOD_HTTP = 'http';
-  const TRANSPORT_METHOD_SECURE = 'https';
-
   private $transport; //supplied @ config options
   private $host; // supplied @ config options
   private $collection; // supplied @ config options
