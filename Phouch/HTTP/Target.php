@@ -42,7 +42,7 @@ class Target {
   }
 
   public function __toString(){
-    $string = $this->transport . "//" . $this->host;
+    $string = $this->transport . "://" . $this->host;
     return $string;
   }
 
