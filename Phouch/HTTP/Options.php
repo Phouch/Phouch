@@ -3,6 +3,7 @@
 namespace Phouch\HTTP;
 
 class Options {
+
   private $host;
   private $port;
   private $transport;
@@ -17,7 +18,12 @@ class Options {
   }
 
   public function setPort($port){
-    $this->port = $port;
+    try {
+      if(!ctype_digit($port)) throw new \Phouch\Exception\HTTP\Port($port);
+      $this->port = $port;
+    } catch (\Phouch\Exception\HTTP\Port $invalidPortException ){
+      echo $invalidPortException->getMessage();
+    }
     return $this;
   }
 
@@ -25,5 +31,18 @@ class Options {
     $this->transport = $transport;
     return $this;
   }
+
+  public function getHost(){
+    return $this->host;
+  }
+
+  public function getPort(){
+    return $this->port;
+  }
+
+  public function getTransport(){
+    return $this->transport;
+  }
+
 
 }
