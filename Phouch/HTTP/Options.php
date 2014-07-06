@@ -16,4 +16,14 @@ class Options {
     return $this;
   }
 
+  public function setPort($port){
+    $this->port = $port;
+    return $this;
+  }
+
+  public function setTransport($transport){
+    $this->transport = $transport;
+    return $this;
+  }
+
 }
