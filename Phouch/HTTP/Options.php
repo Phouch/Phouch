@@ -1,4 +1,12 @@
 <?php
+/**
+ * Phouch\HTTP\Options
+ * @author Dustin Moorman <dustin.moorman@gmail.com>
+ * @description HTTP options, should encompass:
+ * - transport method (http / https)
+ * - host (example.com)
+ * - port (5894)
+ */
 
 namespace Phouch\HTTP;
 
@@ -31,6 +39,9 @@ class Options {
   }
 
   public function setTransport($transport){
+    if(strtolower($transport) !== self::TRANSPORT_METHOD_SECURE){
+      $transport = self::TRANSPORT_METHOD_HTTP;
+    }
     $this->transport = $transport;
     return $this;
   }
