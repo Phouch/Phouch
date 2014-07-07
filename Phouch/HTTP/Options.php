@@ -33,15 +33,15 @@ class Options {
    */
   public function __construct(){
     if(func_num_args() > 0){
-      if(is_array(func_get_arg(0))){
-        $opts = func_get_arg(0);
-        if(array_key_exists('port', $opts))
-          $this->setPort($opts['port']);
-        if(array_key_exists('transport', $opts))
-          $this->setTransport($opts['transport']);
-        if(array_key_exists('host', $opts))
-          $this->setHost($opts['host']);
-      } elseif(strlen(func_get_arg(0)) > 10) {
+      $arg0 = func_get_arg(0);
+      if(is_array($arg0)){
+        if(array_key_exists('port', $arg0))
+          $this->setPort($arg0['port']);
+        if(array_key_exists('transport', $arg0))
+          $this->setTransport($arg0['transport']);
+        if(array_key_exists('host', $arg0))
+          $this->setHost($arg0['host']);
+      } elseif(strlen($arg0) > 10) {
         //first set transport
         //then host
         //then port
