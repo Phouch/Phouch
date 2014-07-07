@@ -15,9 +15,9 @@ class Options {
   const TRANSPORT_METHOD_HTTP = 'http';
   const TRANSPORT_METHOD_SECURE = 'https';
 
-  private $host;
-  private $port;
-  private $transport;
+  private $host = '127.0.0.1';
+  private $port = 5984;
+  private $transport = 'http';
 
   public function __construct(){
     return $this;
