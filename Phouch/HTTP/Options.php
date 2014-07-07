@@ -40,7 +40,7 @@ class Options {
           $this->setTransport($arg0['transport']);
         if(array_key_exists('host', $arg0))
           $this->setHost($arg0['host']);
-      } elseif(strlen($arg0) > 10) {
+      } elseif(filter_var($arg0, FILTER_VALIDATE_URL)) {
         //first set transport
         //then host
         //then port
