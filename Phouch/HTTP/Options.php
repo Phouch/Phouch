@@ -29,7 +29,6 @@ class Options {
    * to be a legitimate target, then attempt to dissect a
    * perfectly formed URL target, and assign appropriately.
    *
-   * @todo reduce calls to func_get_arg(0);
    */
   public function __construct(){
     if(func_num_args() > 0){
