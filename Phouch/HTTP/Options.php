@@ -19,7 +19,34 @@ class Options {
   private $port = 5984;
   private $transport = 'http';
 
+  /**
+   * @param can be an array, or string
+   *
+   * If array, will look for keys transport, host, and port,
+   * and will set accordingly.
+   *
+   * If string, will check to see if it's long enough
+   * to be a legitimate target, then attempt to dissect a
+   * perfectly formed URL target, and assign appropriately.
+   *
+   * @todo reduce calls to func_get_arg(0);
+   */
   public function __construct(){
+    if(func_num_args() > 0){
+      if(is_array(func_get_arg(0))){
+        $opts = func_get_arg(0);
+        if(array_key_exists('port', $opts))
+          $this->setPort($opts['port']);
+        if(array_key_exists('transport', $opts))
+          $this->setTransport($opts['transport']);
+        if(array_key_exists('host', $opts))
+          $this->setHost($opts['host']);
+      } elseif(strlen(func_get_arg(0)) > 10) {
+        //first set transport
+        //then host
+        //then port
+      }
+    }
     return $this;
   }
 
