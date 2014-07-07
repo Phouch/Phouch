@@ -5,7 +5,7 @@ CouchDB library for PHP!
 
 Will be subject to change, unstable, under-development until version 1.0.0!
 
-## Currently Predicted Usage
+## Currently Proposed Usage
 
 The following example shows a CouchDB collection being created, named songs, with one entry added.
 
