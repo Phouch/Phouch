@@ -27,11 +27,11 @@ namespace Phouch\HTTP;
 class Target {
 
   private $port;
-  private $transport; //supplied @ config options
-  private $host; // supplied @ config options
-  private $collection; // supplied @ config options
-  private $id; //supplied @ config options
-  private $command; //couch commands like _all_dbs
+  private $transport;
+  private $host;
+  private $collection;
+  private $id;
+  private $command;
 
   public function __construct(){
     if(func_num_args() > 0){
