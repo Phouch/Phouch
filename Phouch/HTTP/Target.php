@@ -58,4 +58,8 @@ class Target {
     return $this;
   }
 
+  public function addCommand($command){
+    $this->command = $command;
+  }
+
 }
