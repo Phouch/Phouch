@@ -26,6 +26,7 @@ namespace Phouch\HTTP;
 
 class Target {
 
+  private $port;
   private $transport; //supplied @ config options
   private $host; // supplied @ config options
   private $collection; // supplied @ config options
@@ -34,7 +35,14 @@ class Target {
   private $options; //should be options object, can be passed global or individual to the target
 
   public function __construct(){
-    $this->transport = self::TRANSPORT_METHOD_HTTP;
+    if(func_num_args() > 0){
+      $arg0 = func_get_arg(0);
+      if($arg0 instanceof Options){
+        $this->transport = $arg0->getTransport();
+        $this->host = $arg0->getHost();
+        $this->port = $arg0->getPort();
+      }
+    }
     return $this;
   }
 
