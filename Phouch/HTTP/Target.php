@@ -32,7 +32,6 @@ class Target {
   private $collection; // supplied @ config options
   private $id; //supplied @ config options
   private $command; //couch commands like _all_dbs
-  private $options; //should be options object, can be passed global or individual to the target
 
   public function __construct(){
     if(func_num_args() > 0){
