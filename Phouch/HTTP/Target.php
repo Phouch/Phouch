@@ -37,13 +37,16 @@ class Target {
   public function __construct(){
     if(func_num_args() > 0){
       $arg0 = func_get_arg(0);
-      if($arg0 instanceof Options){
-        $this->transport = $arg0->getTransport();
-        $this->host = $arg0->getHost();
-        $this->port = $arg0->getPort();
-      }
+      if($arg0 instanceof Options)
+        $this->setOptions($arg0);
     }
     return $this;
+  }
+
+  public function setOptions(Options $options){
+    $this->transport = $options->getTransport();
+    $this->host = $options->getHost();
+    $this->port = $options->getPort();
   }
 
   public function __toString(){
