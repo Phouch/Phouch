@@ -48,11 +48,6 @@ class Target {
     $this->port = $options->getPort();
   }
 
-  public function __toString(){
-    $string = $this->transport . "://" . $this->host;
-    return $string;
-  }
-
   public function addCollection($collection){
     $this->collection = $collection;
     return $this;
