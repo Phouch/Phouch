@@ -14,6 +14,7 @@
 namespace Phouch;
 
 class Phouch {
+  public function connect(){}
   public function save(){}
   public function drop(){}
   public function create(){}
