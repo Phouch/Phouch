@@ -34,18 +34,23 @@ class Options {
     if(func_num_args() > 0){
       $arg0 = func_get_arg(0);
       if(is_array($arg0)){
-        if(array_key_exists('port', $arg0))
-          $this->setPort($arg0['port']);
-        if(array_key_exists('transport', $arg0))
-          $this->setTransport($arg0['transport']);
-        if(array_key_exists('host', $arg0))
-          $this->setHost($arg0['host']);
+        $this->setWithArray($arg0);
       } elseif(filter_var($arg0, FILTER_VALIDATE_URL)) {
         //first set transport
         //then host
         //then port
       }
     }
+    return $this;
+  }
+
+  public function setWithArray(array $options){
+    if(array_key_exists('port', $options))
+      $this->setPort($options['port']);
+    if(array_key_exists('transport', $options))
+      $this->setTransport($options['transport']);
+    if(array_key_exists('host', $options))
+      $this->setHost($options['host']);
     return $this;
   }
 
