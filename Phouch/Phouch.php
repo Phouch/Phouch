@@ -9,6 +9,15 @@
  * Note: Top level classes in Phouch\Phouch are instantiator
  * classes for more complex objects, ie - facades that safely
  * create a class based on how you will use it.
+ *
+ * Authorization
+ * 
+ *  Authorization should work something like the following:
+ *  $phouch = new Phouch\Phouch(<connection credentials>);
+ *  
+ *  Alternatively via connect method:
+ *  $phouch->connect(<connection credentials>);
+ *
  */
 
 namespace Phouch;
