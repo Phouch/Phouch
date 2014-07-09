@@ -17,11 +17,10 @@
  *  
  * Authorization
  * 
- *  Authorization should work something like the following:
- *  $phouch = new Phouch\Phouch(<connection credentials>);
- *  
- *  Alternatively via connect method:
- *  $phouch->connect(<connection credentials>);
+ *  Authorization will be made available to the Phouch 
+ *  Object from within a Phouch\HTTP\Options Object taken
+ *  from a Phouch\HTTP\Request object during any of the
+ *  actionable methods.
  *
  */
 
