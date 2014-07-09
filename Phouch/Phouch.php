@@ -10,11 +10,6 @@
  * classes for more complex objects, ie - facades that safely
  * create a class based on how you will use it.
  *
- * Connection
- *
- *  The Phouch object will hold a singleton instance of a
- *  connection to be utilized in calls.
- *  
  * Authorization
  * 
  *  Authorization will be made available to the Phouch 
