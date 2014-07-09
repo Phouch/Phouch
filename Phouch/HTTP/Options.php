@@ -17,26 +17,19 @@ class Options {
   private $transport = 'http';
 
   /**
-   * @param can be an array, or string.
+   * @param can be an array, or nothing.
    *
    * If array, will look for keys transport, host, and port,
    * and will set accordingly.
    *
-   * If string, will check to see if it's long enough
-   * to be a legitimate target, then attempt to dissect a
-   * perfectly formed URL target, and assign appropriately.
-   *
+   * If nothing, will assume values as default, or that the
+   * user will set options with a setter.
    */
   public function __construct(){
     if(func_num_args() > 0){
       $arg0 = func_get_arg(0);
-      if(is_array($arg0)){
+      if(is_array($arg0))
         $this->setWithArray($arg0);
-      } elseif(filter_var($arg0, FILTER_VALIDATE_URL)) {
-        //first set transport
-        //then host
-        //then port
-      }
     }
     return $this;
   }
