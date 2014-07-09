@@ -17,7 +17,7 @@ class Options {
   private $transport = 'http';
 
   /**
-   * @param can be an array, or string
+   * @param can be an array, or string.
    *
    * If array, will look for keys transport, host, and port,
    * and will set accordingly.
