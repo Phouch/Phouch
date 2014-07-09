@@ -12,9 +12,6 @@ namespace Phouch\HTTP;
 
 class Options {
 
-  const TRANSPORT_METHOD_HTTP = 'http';
-  const TRANSPORT_METHOD_SECURE = 'https';
-
   private $host = '127.0.0.1';
   private $port = 5984;
   private $transport = 'http';
@@ -70,10 +67,8 @@ class Options {
   }
 
   public function setTransport($transport){
-    if(strtolower($transport) !== self::TRANSPORT_METHOD_SECURE){
-      $transport = self::TRANSPORT_METHOD_HTTP;
-    }
-    $this->transport = $transport;
+    $this->transport = $transport !== 'https' 
+      ? 'http' : $transport;
     return $this;
   }
 
