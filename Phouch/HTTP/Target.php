@@ -26,21 +26,26 @@ namespace Phouch\HTTP;
 
 class Target {
 
-  private $transport; //supplied @ config options
-  private $host; // supplied @ config options
-  private $collection; // supplied @ config options
-  private $id; //supplied @ config options
-  private $command; //couch commands like _all_dbs
-  private $options; //should be options object, can be passed global or individual to the target
+  private $port;
+  private $transport;
+  private $host;
+  private $collection;
+  private $id;
+  private $command;
 
   public function __construct(){
-    $this->transport = self::TRANSPORT_METHOD_HTTP;
+    if(func_num_args() > 0){
+      $arg0 = func_get_arg(0);
+      if($arg0 instanceof Options)
+        $this->setOptions($arg0);
+    }
     return $this;
   }
 
-  public function __toString(){
-    $string = $this->transport . "://" . $this->host;
-    return $string;
+  public function setOptions(Options $options){
+    $this->transport = $options->getTransport();
+    $this->host = $options->getHost();
+    $this->port = $options->getPort();
   }
 
   public function addCollection($collection){
@@ -50,6 +55,11 @@ class Target {
 
   public function addId($id){
     $this->id = $id;
+    return $this;
+  }
+
+  public function addCommand($command){
+    $this->command = $command;
     return $this;
   }
 

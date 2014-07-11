@@ -12,40 +12,35 @@ namespace Phouch\HTTP;
 
 class Options {
 
-  const TRANSPORT_METHOD_HTTP = 'http';
-  const TRANSPORT_METHOD_SECURE = 'https';
-
   private $host = '127.0.0.1';
   private $port = 5984;
   private $transport = 'http';
 
   /**
-   * @param can be an array, or string
+   * @param can be an array, or nothing.
    *
    * If array, will look for keys transport, host, and port,
    * and will set accordingly.
    *
-   * If string, will check to see if it's long enough
-   * to be a legitimate target, then attempt to dissect a
-   * perfectly formed URL target, and assign appropriately.
-   *
+   * If nothing, will assume values as default, or that the
+   * user will set options with a setter.
    */
   public function __construct(){
     if(func_num_args() > 0){
       $arg0 = func_get_arg(0);
-      if(is_array($arg0)){
-        if(array_key_exists('port', $arg0))
-          $this->setPort($arg0['port']);
-        if(array_key_exists('transport', $arg0))
-          $this->setTransport($arg0['transport']);
-        if(array_key_exists('host', $arg0))
-          $this->setHost($arg0['host']);
-      } elseif(filter_var($arg0, FILTER_VALIDATE_URL)) {
-        //first set transport
-        //then host
-        //then port
-      }
+      if(is_array($arg0))
+        $this->setWithArray($arg0);
     }
+    return $this;
+  }
+
+  public function setWithArray(array $options){
+    if(array_key_exists('port', $options))
+      $this->setPort($options['port']);
+    if(array_key_exists('transport', $options))
+      $this->setTransport($options['transport']);
+    if(array_key_exists('host', $options))
+      $this->setHost($options['host']);
     return $this;
   }
 
@@ -65,10 +60,8 @@ class Options {
   }
 
   public function setTransport($transport){
-    if(strtolower($transport) !== self::TRANSPORT_METHOD_SECURE){
-      $transport = self::TRANSPORT_METHOD_HTTP;
-    }
-    $this->transport = $transport;
+    $this->transport = $transport !== 'https' 
+      ? 'http' : $transport;
     return $this;
   }
 
