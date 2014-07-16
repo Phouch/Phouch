@@ -26,41 +26,41 @@ namespace Phouch\HTTP;
 
 class Target {
 
-  private $port;
-  private $transport;
-  private $host;
-  private $collection;
-  private $id;
-  private $command;
+    private $port;
+    private $transport;
+    private $host;
+    private $collection;
+    private $id;
+    private $command;
 
-  public function __construct(){
-    if(func_num_args() > 0){
-      $arg0 = func_get_arg(0);
-      if($arg0 instanceof Options)
-        $this->setOptions($arg0);
+    public function __construct(){
+        if(func_num_args() > 0){
+            $arg0 = func_get_arg(0);
+            if($arg0 instanceof Options)
+                $this->setOptions($arg0);
+        }
+        return $this;
     }
-    return $this;
-  }
 
-  public function setOptions(Options $options){
-    $this->transport = $options->getTransport();
-    $this->host = $options->getHost();
-    $this->port = $options->getPort();
-  }
+    public function setOptions(Options $options){
+        $this->transport = $options->getTransport();
+        $this->host = $options->getHost();
+        $this->port = $options->getPort();
+    }
 
-  public function addCollection($collection){
-    $this->collection = $collection;
-    return $this;
-  }
+    public function addCollection($collection){
+        $this->collection = $collection;
+        return $this;
+    }
 
-  public function addId($id){
-    $this->id = $id;
-    return $this;
-  }
+    public function addId($id){
+        $this->id = $id;
+        return $this;
+    }
 
-  public function addCommand($command){
-    $this->command = $command;
-    return $this;
-  }
+    public function addCommand($command){
+        $this->command = $command;
+        return $this;
+    }
 
 }
