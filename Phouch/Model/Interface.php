@@ -3,7 +3,7 @@
 namespace Phouch\Model;
 
 interface Model {
-  public function create();
-  public function store();
-  public function remove();
+    public function create();
+    public function store();
+    public function remove();
 }
