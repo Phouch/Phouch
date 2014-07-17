@@ -10,16 +10,15 @@
  *
  * Via constructor method:
  *
- * new Request\Get(new Target('collection/id', $config));
+ *    new Request\Get(new Target($config));
  *
  * Via chaining setters:
  *
- * new Request\Get(
- *   new Target()
- *     ->setOptions($config)
- *     ->addCollection('collection')
- *     ->addId('id')
- * );
+ *    $target = new Target();
+ *    new Request\Get($target->setOptions($config))
+ *      ->addCollection('collection')
+ *      ->addId('id')
+ *
  */
 
 namespace Phouch\HTTP;
