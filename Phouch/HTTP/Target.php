@@ -29,7 +29,6 @@ class Target {
     private $port;
     private $transport;
     private $host;
-    private $collection;
 
     public function __construct(){
         if(func_num_args() > 0){
@@ -46,8 +45,4 @@ class Target {
         $this->port = $options->getPort();
     }
 
-    public function addCollection($collection){
-        $this->collection = $collection;
-        return $this;
-    }
 }
