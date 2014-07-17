@@ -30,7 +30,6 @@ class Target {
     private $transport;
     private $host;
     private $collection;
-    private $id;
 
     public function __construct(){
         if(func_num_args() > 0){
@@ -51,10 +50,4 @@ class Target {
         $this->collection = $collection;
         return $this;
     }
-
-    public function addId($id){
-        $this->id = $id;
-        return $this;
-    }
-
 }
