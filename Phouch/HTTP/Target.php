@@ -31,7 +31,6 @@ class Target {
     private $host;
     private $collection;
     private $id;
-    private $command;
 
     public function __construct(){
         if(func_num_args() > 0){
@@ -55,11 +54,6 @@ class Target {
 
     public function addId($id){
         $this->id = $id;
-        return $this;
-    }
-
-    public function addCommand($command){
-        $this->command = $command;
         return $this;
     }
 
