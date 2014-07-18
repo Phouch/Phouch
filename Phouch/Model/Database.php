@@ -1,6 +1,6 @@
 <?php
 /**
- * Phouch\Model\Collection
+ * Phouch\Model\Database
  * @author Dustin Moorman <dustin.moorman@gmail.com>
  * 
  * Collection model, will be responsible for commands
@@ -10,6 +10,6 @@
 
 namespace Phouch\Model;
 
-class Collection extends Base {
+class Database extends Base {
 
 }
