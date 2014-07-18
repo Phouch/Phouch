@@ -2,6 +2,6 @@
 
 namespace Phouch;
 
-class Collection {
+class Database {
 
 }
