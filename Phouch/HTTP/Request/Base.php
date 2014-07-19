@@ -12,15 +12,16 @@ class Base {
     public function __construct(){
     	if(!isset($this->_curl_handle))
     		$this->_curl_handle = curl_init();
-        if(func_num_args() > 0){
-            $arg0 = func_get_arg(0);
-            if($arg0 instanceof \Phouch\HTTP\Options){
-                $this->setOptions($arg0);
-            }
-        }
+
+        if(func_num_args() > 0)
+            $this->setOptionsIfPassed(func_get_arg(0));
     }
 
     public function execute(){
+
+        if(func_num_args() > 0)
+            $this->setOptionsIfPassed(func_get_arg(0));
+
         try {
             if(!$this->_options instanceof \Phouch\HTTP\Options)
                 throw new \Phouch\Exception\HTTP\Options\NotSet();
@@ -37,5 +38,11 @@ class Base {
 
     public function setOptions(\Phouch\HTTP\Options $options){
         $this->_options = $options;
+    }
+
+    private function setOptionsIfPassed($options){
+        if($options instanceof \Phouch\HTTP\Options){
+            $this->setOptions($options);
+        }
     }
 }
