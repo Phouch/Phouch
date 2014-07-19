@@ -15,6 +15,7 @@ class Options {
     private $host = '127.0.0.1';
     private $port = 5984;
     private $transport = 'http';
+    private $uri = '/';
 
     /**
     * @param can be an array, or nothing.
