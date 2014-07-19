@@ -76,4 +76,8 @@ class Options {
     public function getTransport(){
         return $this->transport;
     }
+
+    public function getCurlOptions(){
+        return array();
+    }
 }
