@@ -28,14 +28,30 @@ $result = $phouch->getAllDatabases();
 ```
 
 ###Add a new database
+
+Adding new databases to your CouchDB instance with Phouch is simple. We provide a simplified interface, as well as a full object interface for creating and handling Phouch entities (and therefore CouchDB entities) in real object-oriented fashion.
+
+####Simplified
+
+Simply pass an array to the Phouch object, and Phouch\Phouch::addDatabase() will parse the options provided and persist the database.
+
 ```php
 $result = $phouch->addDatabase(array("name" => "songs"));
 
-//or
+```
+
+####Using Objects
+
+Create your own Phouch\Database object, and send it to the Phouch object to be persisted with Phouch\Phouch::save(). The Phouch Entity Objects can accept an array in their constructor to set properties for that entity.
+
+```php
 
 $phouch->save(new Phouch\Database(array("name" => "songs")));
 
-//or
+```
+Equally, a full range of setters will be available to the object for integration with complex business logic in an elegant fashion.
+
+```php
 
 $database = new Phouch\Database();
 
