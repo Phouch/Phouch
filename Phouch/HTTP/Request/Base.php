@@ -1,5 +1,18 @@
 <?php
-
+/**
+ * Phouch\HTTP\Request\Base
+ *
+ * @description Base HTTP Request object. Should be extended
+ * and made concrete by a specific implementation of an HTTP
+ * request.
+ *
+ *  - PUT
+ *  - POST
+ *  - GET
+ *  - DELETE
+ *
+ * Mechanics use the php-curl library to manage the request.
+ */
 namespace Phouch\HTTP\Request;
 
 class Base {
