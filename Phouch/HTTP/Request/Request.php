@@ -1,10 +1,11 @@
 <?php
 /**
- * Phouch\HTTP\Request\Base
+ * Phouch\HTTP\Request
  *
- * @description Base HTTP Request object. Should be extended
- * and made concrete by a specific implementation of an HTTP
- * request.
+ * @description Phouch HTTP Request object. Operates by attaching
+ * a set of HTTP\Options to it, either by constructor, setter, or
+ * Request::execute() method. Options can be for any type of
+ * request and be parsed accordingly.
  *
  *  - PUT
  *  - POST
