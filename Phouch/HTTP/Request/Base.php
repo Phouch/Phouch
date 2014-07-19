@@ -23,9 +23,7 @@ abstract class Base {
 	protected $_options;
 
     public function __construct(){
-    	if(!isset($this->_curl_handle))
-    		$this->_curl_handle = curl_init();
-
+    	$this->setCurlHandle();
         if(func_num_args() > 0)
             $this->setOptionsIfPassed(func_get_arg(0));
     }
@@ -59,6 +57,11 @@ abstract class Base {
     public function setOptions(\Phouch\HTTP\Options $options){
         $this->_options = $options;
         return $this;
+    }
+
+    public function setCurlHandle(){
+        if(!isset($this->_curl_handle))
+            $this->_curl_handle = curl_init();
     }
 
     private function setOptionsIfPassed($options){
