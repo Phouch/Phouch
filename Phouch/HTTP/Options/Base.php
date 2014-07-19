@@ -87,7 +87,4 @@ abstract class Base {
         return $this->transport;
     }
 
-    public function getCurlOptions(){
-        return array();
-    }
 }
