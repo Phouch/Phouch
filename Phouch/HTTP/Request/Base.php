@@ -26,7 +26,10 @@ class Base {
                 throw new \Phouch\Exception\HTTP\Options\NotSet();
 
         } catch(\Exception $e){
-
+            echo $e->getMessage();
+            return; //TODO Make execute return Response Object
+                    //with error state, pass the Exception, or
+                    //Exception::getMessage result.
         }
     }
 }
