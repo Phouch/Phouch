@@ -40,11 +40,21 @@ $phouch->save($database);
 
 ###Add new document to database
 ```php
-$result = $phouch->addDocument(array("database" => "songs", "values" => array("title" => "Ice Ice Baby", "artist" => "Vanilla Ice")));
+$result = $phouch->addDocument(array(
+    "database" => "songs", 
+    "values" => array(
+        "title" => "Ice Ice Baby", 
+        "artist" => "Vanilla Ice")
+));
 
 //or
 
-$phouch->save(new Phouch\Document(array("database" => "songs", "values" => array("title" => "Ice Ice Baby", "artist" => "Vanilla Ice")));
+$phouch->save(new Phouch\Document(array(
+    "database" => "songs", 
+    "values" => array(
+        "title" => "Ice Ice Baby", 
+        "artist" => "Vanilla Ice")
+));
 
 //or
 
