@@ -58,6 +58,7 @@ abstract class Base {
 
     public function setOptions(\Phouch\HTTP\Options $options){
         $this->_options = $options;
+        return $this;
     }
 
     private function setOptionsIfPassed($options){
