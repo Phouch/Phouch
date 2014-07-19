@@ -18,13 +18,12 @@ namespace Phouch\HTTP;
 
 class Request {
 
-	protected $_curl_handle;
+    protected $_http_service;
 
 	/** @var \Phouch\HTTP\Options */
 	protected $_options;
 
     public function __construct(){
-    	$this->setCurlHandle();
         if(func_num_args() > 0)
             $this->setOptionsIfPassed(func_get_arg(0));
     }
@@ -35,11 +34,11 @@ class Request {
             $this->setOptionsIfPassed(func_get_arg(0));
 
         try {
-            if(!$this->_options instanceof Options)
+            if(!$this->_options instanceof Options\Base)
                 throw new \Phouch\Exception\HTTP\Options\NotSet();
 
-            if(!$this->_curl_handle)
-                throw new \Phouch\Exception\HTTP\Curl\NotSet();
+            if(!$this->_http_service instanceof Service\HttpService)
+                throw new \Phouch\Exception\HTTP\Service\NotSet();
 
         } catch(\Exception $e){
             return new Response(
@@ -47,22 +46,19 @@ class Request {
             );
         }
 
-        curl_setopt_array($this->_curl_handle,$this->_options->getCurlOptions());
-
         return new Response(
-            json_decode(curl_exec($this->_curl_handle), true)
+            $this->_http_service->execute()
         );
 
     }
 
-    public function setOptions(Options $options){
+    public function setOptions(Options\Base $options){
         $this->_options = $options;
         return $this;
     }
 
-    public function setCurlHandle(){
-        if(!isset($this->_curl_handle))
-            $this->_curl_handle = curl_init();
+    public function setHTTPService(Service\HttpService $http_service){
+        $this->_http_service = $http_service;
         return $this;
     }
 
