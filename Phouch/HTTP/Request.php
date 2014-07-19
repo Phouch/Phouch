@@ -20,7 +20,7 @@ class Request {
 
     protected $_http_service;
 
-	/** @var \Phouch\HTTP\Options */
+	/** @var \Phouch\HTTP\Options\Base */
 	protected $_options;
 
     public function __construct(){
