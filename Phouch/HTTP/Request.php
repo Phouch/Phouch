@@ -27,13 +27,13 @@ class Request {
 
     public function __construct(){
         if(func_num_args() > 0)
-            $this->setOptionsIfPassed(func_get_arg(0));
+            $this->setComponentsIfPassed(func_get_args());
     }
 
     public function execute(){
 
         if(func_num_args() > 0)
-            $this->setOptionsIfPassed(func_get_arg(0));
+            $this->setComponentsIfPassed(func_get_args());
 
         try {
             if(!$this->_options instanceof Options\Base)
@@ -66,9 +66,14 @@ class Request {
         return $this;
     }
 
-    private function setOptionsIfPassed($options){
-        if($options instanceof Options\Base){
-            $this->setOptions($options);
+    private function setComponentsIfPassed($components){
+        foreach($components as $component){
+            if($component instanceof Options\Base)
+                $this->setOptions($component);
+
+            if($component instanceof Service\HttpService)
+                $this->setHTTPService($component);
+
         }
     }
 }
