@@ -13,9 +13,9 @@
  *
  * Mechanics use the php-curl library to manage the request.
  */
-namespace Phouch\HTTP\Request;
+namespace Phouch\HTTP;
 
-abstract class Base {
+class Request {
 
 	protected $_curl_handle;
 
