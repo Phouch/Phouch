@@ -37,7 +37,6 @@ Simply pass an array to the Phouch object, and Phouch\Phouch::addDatabase() will
 
 ```php
 $result = $phouch->addDatabase(array("name" => "songs"));
-
 ```
 
 ####Using Objects
@@ -45,14 +44,11 @@ $result = $phouch->addDatabase(array("name" => "songs"));
 Create your own Phouch\Database object, and send it to the Phouch object to be persisted with Phouch\Phouch::save(). The Phouch Entity Objects can accept an array in their constructor to set properties for that entity.
 
 ```php
-
 $phouch->save(new Phouch\Database(array("name" => "songs")));
-
 ```
 Equally, a full range of setters will be available to the object for integration with complex business logic in an elegant fashion.
 
 ```php
-
 $database = new Phouch\Database();
 
 $database->setName("songs");
