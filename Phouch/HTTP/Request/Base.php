@@ -62,6 +62,7 @@ abstract class Base {
     public function setCurlHandle(){
         if(!isset($this->_curl_handle))
             $this->_curl_handle = curl_init();
+        return $this;
     }
 
     private function setOptionsIfPassed($options){
