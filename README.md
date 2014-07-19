@@ -11,6 +11,9 @@ The following examples show common database transactions using Phouch.
 
 
 ###To start
+
+Requiring the Phouch library is as simple as including the phouch autoloader, after that you're able to use the Phouch object to initiate database transactions or create Phouch entities.
+
 ```php
 require_once 'phouch.php';
 $phouch = new Phouch\Phouch();
