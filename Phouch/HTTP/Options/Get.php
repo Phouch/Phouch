@@ -1,6 +1,6 @@
 <?php
 
-namespace Phouch\HTTP\Request;
+namespace Phouch\HTTP\Options;
 
 class Get {
 
