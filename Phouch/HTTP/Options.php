@@ -42,11 +42,18 @@ class Options {
             $this->setTransport($options['transport']);
         if(array_key_exists('host', $options))
             $this->setHost($options['host']);
+        if(array_key_exists('uri', $options))
+            $this->setUri($options['uri']);
         return $this;
     }
 
     public function setHost($host){
         $this->host = $host;
+        return $this;
+    }
+
+    public function setURI($uri){
+        $this->uri = $uri;
         return $this;
     }
 
