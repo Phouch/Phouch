@@ -34,27 +34,27 @@ class Request {
             $this->setOptionsIfPassed(func_get_arg(0));
 
         try {
-            if(!$this->_options instanceof \Phouch\HTTP\Options)
+            if(!$this->_options instanceof Options)
                 throw new \Phouch\Exception\HTTP\Options\NotSet();
 
             if(!$this->_curl_handle)
                 throw new \Phouch\Exception\HTTP\Curl\NotSet();
 
         } catch(\Exception $e){
-            return new \Phouch\HTTP\Response(
+            return new Response(
                 array('error' => $e->getMessage())
             );
         }
 
         curl_setopt_array($this->_curl_handle,$this->_options->getCurlOptions());
 
-        return new \Phouch\HTTP\Response(
+        return new Response(
             json_decode(curl_exec($this->_curl_handle), true)
         );
 
     }
 
-    public function setOptions(\Phouch\HTTP\Options $options){
+    public function setOptions(Options $options){
         $this->_options = $options;
         return $this;
     }
@@ -66,7 +66,7 @@ class Request {
     }
 
     private function setOptionsIfPassed($options){
-        if($options instanceof \Phouch\HTTP\Options){
+        if($options instanceof Options){
             $this->setOptions($options);
         }
     }
