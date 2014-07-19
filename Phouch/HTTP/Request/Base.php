@@ -15,7 +15,7 @@ class Base {
         if(func_num_args() > 0){
             $arg0 = func_get_arg(0);
             if($arg0 instanceof \Phouch\HTTP\Options){
-                $this->_options = $arg0;
+                $this->setOptions($arg0);
             }
         }
     }
@@ -31,5 +31,11 @@ class Base {
                     //with error state, pass the Exception, or
                     //Exception::getMessage result.
         }
+
+
+    }
+
+    public function setOptions(\Phouch\HTTP\Options $options){
+        $this->_options = $options;
     }
 }
