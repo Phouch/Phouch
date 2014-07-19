@@ -17,6 +17,21 @@
 namespace Phouch\HTTP\Service;
 
 interface HttpService {
+
+    /**
+     * @param \Phouch\HTTP\Options\Base $options
+     * @description Take a Phouch\HTTP\Options object
+     * and map it to the service layer's corresponding
+     * values.
+     * @return mixed
+     */
     public function setOptions(\Phouch\HTTP\Options\Base $options);
+
+    /**
+     * @description Execute the HTTP Request and
+     * return an array to be parsed into a
+     * Phouch\HTTP\Response object.
+     * @return array
+     */
     public function execute();
 }
