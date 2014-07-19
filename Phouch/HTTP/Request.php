@@ -48,6 +48,8 @@ class Request {
             );
         }
 
+        $this->_http_service->setOptions($this->_options);
+
         return new Response(
             $this->_http_service->execute()
         );
