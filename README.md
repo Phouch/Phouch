@@ -10,18 +10,18 @@ Will be subject to change, unstable, under-development until version 1.0.0!
 The following example shows a CouchDB database being created, named songs, with one entry added.
 
 
-To start:
+###To start:
 ```php
 require_once 'phouch.php';
 $phouch = new Phouch\Phouch();
 ```
 
-To get all databases:
+###To get all databases:
 ```php
 $result = $phouch->getAllDatabases();
 ```
 
-Add a new database:
+###Add a new database:
 ```php
 $result = $phouch->addDatabase(array("name" => "songs"));
 
@@ -38,7 +38,7 @@ $database->setName("songs");
 $phouch->save($database);
 ```
 
-Add new document to database:
+###Add new document to database:
 ```php
 $result = $phouch->addDocument(array("database" => "songs", "values" => array("title" => "Ice Ice Baby", "artist" => "Vanilla Ice")));
 
