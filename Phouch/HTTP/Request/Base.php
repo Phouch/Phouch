@@ -15,7 +15,7 @@
  */
 namespace Phouch\HTTP\Request;
 
-class Base {
+abstract class Base {
 
 	protected $_curl_handle;
 
