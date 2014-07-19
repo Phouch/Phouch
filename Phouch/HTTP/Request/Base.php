@@ -19,4 +19,14 @@ class Base {
             }
         }
     }
+
+    public function execute(){
+        try {
+            if(!$this->_options instanceof \Phouch\HTTP\Options)
+                throw new \Phouch\Exception\HTTP\Options\NotSet();
+
+        } catch(\Exception $e){
+
+        }
+    }
 }
