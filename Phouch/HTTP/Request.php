@@ -65,7 +65,7 @@ class Request {
     }
 
     private function setOptionsIfPassed($options){
-        if($options instanceof Options){
+        if($options instanceof Options\Base){
             $this->setOptions($options);
         }
     }
