@@ -43,10 +43,9 @@ abstract class Base {
                 throw new \Phouch\Exception\HTTP\Curl\NotSet();
 
         } catch(\Exception $e){
-            echo $e->getMessage();
-            return; //TODO Make execute return Response Object
-                    //with error state, pass the Exception, or
-                    //Exception::getMessage result.
+            return new \Phouch\HTTP\Response(
+                array('error' => $e->getMessage())
+            );
         }
 
         curl_setopt_array($this->_curl_handle,$this->_options->getCurlOptions());
