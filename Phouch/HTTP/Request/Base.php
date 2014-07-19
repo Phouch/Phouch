@@ -39,6 +39,9 @@ abstract class Base {
             if(!$this->_options instanceof \Phouch\HTTP\Options)
                 throw new \Phouch\Exception\HTTP\Options\NotSet();
 
+            if(!$this->_curl_handle)
+                throw new \Phouch\Exception\HTTP\Curl\NotSet();
+
         } catch(\Exception $e){
             echo $e->getMessage();
             return; //TODO Make execute return Response Object
@@ -46,6 +49,11 @@ abstract class Base {
                     //Exception::getMessage result.
         }
 
+        curl_setopt_array($this->_curl_handle,$this->_options->getCurlOptions());
+
+        return new \Phouch\HTTP\Response(
+            json_decode(curl_exec($this->_curl_handle), true)
+        );
 
     }
 
