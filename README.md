@@ -5,9 +5,9 @@ Welcome to Phouch! CouchDB library for PHP.
 
 Will be subject to change, unstable, under-development until version 1.0.0!
 
-## Currently Proposed Usage
+## Usage
 
-The following example shows a CouchDB database being created, named songs, with one entry added.
+The following examples show common database transactions using Phouch. 
 
 
 ###To start
