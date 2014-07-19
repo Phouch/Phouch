@@ -57,6 +57,11 @@ $phouch->save($database);
 ```
 
 ###Add new document to database
+
+Phouch will maintain two parallel patterns of thought in usage, supporting the light weight, simplified implementation as well as the full object oriented implementation. Below are these implementations shown when adding documents to a database.
+
+####Simplified
+
 ```php
 $result = $phouch->addDocument(array(
     "database" => "songs", 
@@ -64,28 +69,35 @@ $result = $phouch->addDocument(array(
         "title" => "Ice Ice Baby", 
         "artist" => "Vanilla Ice")
 ));
+```
 
-//or
+####Using Objects
 
+```php
 $phouch->save(new Phouch\Document(array(
     "database" => "songs", 
     "values" => array(
         "title" => "Ice Ice Baby", 
         "artist" => "Vanilla Ice")
 ));
+```
 
-//or
+Equally, using setters on the object, and assigning the document a database from the document itself, then persisting the data.
 
+```php
 $document = new Phouch\Document();
+$songs = new Phouch\Database(array("name" => "songs"))
 
-$document->setDatabase();
+$document->setDatabase($songs);
 $document->setValue("title", "Ice Ice Baby");
 $document->setValue("artist", "Vanilla Ice");
 
 $phouch->save($document);
+```
 
-//or
+Same implementation, with the document itself being added to the database, then persisted.
 
+```php
 $database = $phouch->getDatabase("songs");
 
 $database->addDocument($document);
