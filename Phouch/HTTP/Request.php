@@ -12,12 +12,14 @@
  *  - GET
  *  - DELETE
  *
- * Mechanics use the php-curl library to manage the request.
+ * The HTTP\Request also requires an HttpService, which can be
+ * configured based on the environment or choice of technology.
  */
 namespace Phouch\HTTP;
 
 class Request {
 
+    /** @var  \Phouch\HTTP\Service\HttpService */
     protected $_http_service;
 
 	/** @var \Phouch\HTTP\Options\Base */
