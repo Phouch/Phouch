@@ -17,6 +17,9 @@ $phouch = new Phouch\Phouch();
 ```
 
 ###To get all databases
+
+Phouch mirrors the CouchDB API very closely, each built-in database command will have similar, user friendly implementations in Phouch. For example, a GET request for retrieving all databases in Phouch, similar to CouchDB's _all_dbs command, could be used the following way.
+
 ```php
 $result = $phouch->getAllDatabases();
 ```
