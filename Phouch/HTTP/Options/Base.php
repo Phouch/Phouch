@@ -1,16 +1,18 @@
 <?php
 /**
- * Phouch\HTTP\Options
+ * Phouch\HTTP\Options\Base
  * @author Dustin Moorman <dustin.moorman@gmail.com>
  * @description HTTP options, should encompass:
  * - transport method (http / https)
  * - host (example.com)
  * - port (5894)
+ * and be extended to fully implement any type of
+ * HTTP request.
  */
 
-namespace Phouch\HTTP;
+namespace Phouch\HTTP\Options;
 
-class Options {
+abstract class Base {
 
     private $host = '127.0.0.1';
     private $port = 5984;
