@@ -84,6 +84,10 @@ abstract class Base {
         return $this->port;
     }
 
+    public function getUri(){
+        return $this->uri;
+    }
+
     public function getTransport(){
         return $this->transport;
     }
