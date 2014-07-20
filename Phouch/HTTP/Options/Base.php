@@ -18,6 +18,7 @@ abstract class Base {
     private $port = 5984;
     private $transport = 'http';
     private $uri = '/';
+    protected $method;
 
     /**
     * @param can be an array, or nothing.
@@ -87,4 +88,7 @@ abstract class Base {
         return $this->transport;
     }
 
+    public function getMethod(){
+        return $this->method;
+    }
 }
