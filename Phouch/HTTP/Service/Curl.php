@@ -22,11 +22,13 @@ class Curl implements HttpService {
 
     public function setOptions(\Phouch\HTTP\Options\Base $options){
         $opts = array();
+
         $opts[CURLOPT_CUSTOMREQUEST] = $options->getMethod();
         $opts[CURLOPT_URL] = $options->getTransport()
             . '://' . $options->getHost()
             . ':' . $options->getPort()
             . $options->getUri();
+
         curl_setopt_array($this->_curl_handle, $opts);
     }
 
