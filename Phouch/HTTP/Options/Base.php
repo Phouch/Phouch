@@ -18,6 +18,7 @@ abstract class Base {
     private $port = 5984;
     private $transport = 'http';
     private $uri = '/';
+    protected $postData = array();
     protected $method;
 
     /**
@@ -60,6 +61,11 @@ abstract class Base {
         return $this;
     }
 
+    public function setPostData(array $data){
+        $this->postData = $data;
+        return $this;
+    }
+
     public function setPort($port){
         try {
             if(!ctype_digit($port)) throw new \Phouch\Exception\HTTP\Port($port);
@@ -84,11 +90,19 @@ abstract class Base {
         return $this->port;
     }
 
+    public function getUri(){
+        return $this->uri;
+    }
+
     public function getTransport(){
         return $this->transport;
     }
 
     public function getMethod(){
         return $this->method;
+    }
+
+    public function getPostData(){
+        return $this->postData;
     }
 }
