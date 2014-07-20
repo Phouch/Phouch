@@ -21,6 +21,7 @@ class Curl implements HttpService {
     }
 
     public function setOptions(\Phouch\HTTP\Options\Base $options){
+        $this->setCurlHandle();
         curl_setopt_array($this->_curl_handle, $options);
     }
 
