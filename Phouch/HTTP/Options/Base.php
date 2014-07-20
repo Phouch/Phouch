@@ -1,20 +1,23 @@
 <?php
 /**
- * Phouch\HTTP\Options
+ * Phouch\HTTP\Options\Base
  * @author Dustin Moorman <dustin.moorman@gmail.com>
  * @description HTTP options, should encompass:
  * - transport method (http / https)
  * - host (example.com)
  * - port (5894)
+ * and be extended to fully implement any type of
+ * HTTP request.
  */
 
-namespace Phouch\HTTP;
+namespace Phouch\HTTP\Options;
 
-class Options {
+abstract class Base {
 
     private $host = '127.0.0.1';
     private $port = 5984;
     private $transport = 'http';
+    private $uri = '/';
 
     /**
     * @param can be an array, or nothing.
@@ -41,11 +44,18 @@ class Options {
             $this->setTransport($options['transport']);
         if(array_key_exists('host', $options))
             $this->setHost($options['host']);
+        if(array_key_exists('uri', $options))
+            $this->setUri($options['uri']);
         return $this;
     }
 
     public function setHost($host){
         $this->host = $host;
+        return $this;
+    }
+
+    public function setURI($uri){
+        $this->uri = $uri;
         return $this;
     }
 
@@ -76,4 +86,5 @@ class Options {
     public function getTransport(){
         return $this->transport;
     }
+
 }
