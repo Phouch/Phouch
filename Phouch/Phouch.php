@@ -22,9 +22,6 @@
 namespace Phouch;
 
 class Phouch {
-    public function __construct(array()) {
-        
-    }
     
     /**
      * GET _all_dbs
@@ -33,6 +30,26 @@ class Phouch {
      * @return type Description
      */
     public function getAllDatabases() {
+        
+    }
+    
+    public function addDatabase($database) {
+        
+    }
+    
+    public function deleteDatabase($database) {
+        
+    }
+    
+    public function getAllDocuments($database) {
+        
+    }
+    
+    public function addDocument($document) {
+        
+    }
+    
+    public function deleteDocument($document) {
         
     }
 }
