@@ -18,6 +18,7 @@ abstract class Base {
     private $port = 5984;
     private $transport = 'http';
     private $uri = '/';
+    protected $postData;
     protected $method;
 
     /**
@@ -57,6 +58,11 @@ abstract class Base {
 
     public function setURI($uri){
         $this->uri = $uri;
+        return $this;
+    }
+
+    public function setPostData(array $data){
+        $this->postData = $data;
         return $this;
     }
 
