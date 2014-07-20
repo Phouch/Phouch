@@ -16,7 +16,7 @@ Requiring the Phouch library is as simple as including the phouch autoloader, af
 
 ```php
 require_once 'phouch.php';
-$phouch = new Phouch\Phouch();
+$phouch = new Phouch\Phouch(array("host" => "example.com", "port" => 1234, "transport" => "https"));
 ```
 
 ###To get all databases

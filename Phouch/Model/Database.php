@@ -11,5 +11,18 @@
 namespace Phouch\Model;
 
 class Database extends Base {
-
+    protected $_name;
+    
+    public function setName($name) {
+        $this->_name = $name;
+        
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getName() {
+        return $this->_name;
+    }
 }
