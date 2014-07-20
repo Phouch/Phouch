@@ -29,10 +29,8 @@ class Curl implements HttpService {
             . ':' . $options->getPort()
             . $options->getUri();
 
-        $post_data = $options->getPostData();
-
-        if(!empty($post_data))
-            $opts[CURLOPT_POSTFIELDS] = json_encode($post_data);
+        if($options instanceof \Phouch\HTTP\Options\Post)
+            $opts[CURLOPT_POSTFIELDS] = json_encode($options->getPostData());
 
         curl_setopt_array($this->_curl_handle, $opts);
     }
