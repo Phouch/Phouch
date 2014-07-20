@@ -22,8 +22,34 @@
 namespace Phouch;
 
 class Phouch {
-    public function connect(){}
-    public function save(){}
-    public function drop(){}
-    public function create(){}
+    
+    /**
+     * GET _all_dbs
+     * 
+     * @link http://wiki.apache.org/couchdb/HTTP_database_API#Working_with_Databases documentation
+     * @return type Description
+     */
+    public function getAllDatabases() {
+        
+    }
+    
+    public function addDatabase($database) {
+        
+    }
+    
+    public function deleteDatabase($database) {
+        
+    }
+    
+    public function getAllDocuments($database) {
+        
+    }
+    
+    public function addDocument($document) {
+        
+    }
+    
+    public function deleteDocument($document) {
+        
+    }
 }
