@@ -18,7 +18,7 @@ abstract class Base {
     private $port = 5984;
     private $transport = 'http';
     private $uri = '/';
-    protected $postData;
+    protected $postData = array();
     protected $method;
 
     /**
@@ -100,5 +100,9 @@ abstract class Base {
 
     public function getMethod(){
         return $this->method;
+    }
+
+    public function getPostData(){
+        return $this->postData;
     }
 }
