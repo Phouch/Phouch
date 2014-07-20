@@ -2,6 +2,8 @@
 
 namespace Phouch\HTTP\Options;
 
-class Post {
-
+class Post extends Base {
+    public function __construct(){
+        $this->method = 'POST';
+    }
 }
