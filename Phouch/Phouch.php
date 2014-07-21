@@ -22,7 +22,7 @@
 namespace Phouch;
 
 class Phouch {
-    
+
     /**
      * GET _all_dbs
      * 
@@ -30,11 +30,29 @@ class Phouch {
      * @return type Description
      */
     public function getAllDatabases() {
+        //This is obviously not the way we will be doing this but as a test this does get the proper response
+        $options = new HTTP\Options\Get();
         
+        $options->setHost("someurl")
+            ->setTransport("https")
+            ->setUsername("someusername")
+            ->setPassword("somepassword")
+            ->setCertPath("somepathifneeded")
+            ->setURI("/_all_dbs");
+        
+        $http_service = new HTTP\Service\Curl();
+
+        $http_service->setOptions($options);
+
+        $request = new HTTP\Request($options, $http_service);
+
+        $response = $request->execute();
+
+        return $response->getResponse();
     }
     
     public function addDatabase($database) {
-        
+
     }
     
     public function deleteDatabase($database) {
