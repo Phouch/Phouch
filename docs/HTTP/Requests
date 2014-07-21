@@ -35,7 +35,7 @@ This is useful if you need to use a different service provider than your default
 Post requests can be handled in a few different ways for flexibility in design.
 
 ```php
-$options = new Options\Post();
+$options = new Options\POST();
 $options->setURI('/songs')
     ->setPostData(array(
        'id' => 'alone_in_kyoto',
@@ -51,7 +51,7 @@ $response = $request->execute();
 ## GET Requests
 
 ```php
-$options = new Options\Get();
+$options = new Options\GET();
 $options->setURI('/songs/alone_in_kyoto');
 
 $request = new Request($options);
@@ -61,7 +61,7 @@ $response = $request->execute();
 ## DELETE Requests
 
 ```php
-$options = new Options\Delete();
+$options = new Options\DELETE();
 $options->setURI('/songs/alone_in_kyoto');
 
 $request = new Request($options);
