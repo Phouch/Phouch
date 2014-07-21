@@ -44,5 +44,5 @@ $options->setURI('/songs')
 ));
 
 $request = new Request($options);
-$request->execute();
+$response = $request->execute();
 ```
