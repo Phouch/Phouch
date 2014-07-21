@@ -124,4 +124,12 @@ abstract class Base {
         return $this->method;
     }
 
+    public function getUsername(){
+        return $this->username;
+    }
+
+    public function getPassword(){
+        return $this->password;
+    }
+
 }
