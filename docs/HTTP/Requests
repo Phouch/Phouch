@@ -47,3 +47,13 @@ $options->setURI('/songs')
 $request = new Request($options);
 $response = $request->execute();
 ```
+
+## Get Requests
+
+```php
+$options = new Options\Get();
+$options->setURI('/songs/alone_in_kyoto');
+
+$request = new Request($options);
+$response = $request->execute();
+```
