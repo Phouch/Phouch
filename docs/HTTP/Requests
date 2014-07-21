@@ -22,8 +22,10 @@ Service providers can as easily be injected manually into a Request object durin
 ```php
 $request = new Phouch\HTTP\Request();
 $service = new Phouch\HTTP\Service\Curl();
+
 $service->setOptions(new Phouch\HTTP\Options\Get());
 $request->setHttpService($service);
+
 $response = $request->execute();
 ```
 This is useful if you need to use a different service provider than your default at any point in the application. Options can be given to either the Request or the HttpService provider, by default, they should be passed through the Request object.
