@@ -38,9 +38,10 @@ Post requests can be handled in a few different ways for flexibility in design.
 $options = new Options\Post();
 $options->setURI('/songs')
     ->setPostData(array(
-       'id' => 'alone in kyoto',
-       'artist' => 'air',
-       'album' => 'talkie walkie'
+       'id' => 'alone_in_kyoto',
+       'title' => 'Alone in Kyoto
+       'artist' => 'Air',
+       'album' => 'Talkie Walkie'
 ));
 
 $request = new Request($options);
