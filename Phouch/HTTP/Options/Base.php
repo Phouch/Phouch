@@ -18,6 +18,8 @@ abstract class Base {
     private $port = 5984;
     private $transport = 'http';
     private $uri = '/';
+    private $username = null;
+    private $password = null;
     protected $method;
 
     /**
@@ -47,6 +49,10 @@ abstract class Base {
             $this->setHost($options['host']);
         if(array_key_exists('uri', $options))
             $this->setUri($options['uri']);
+        if(array_key_exists('username', $options))
+            $this->setUri($options['username']);
+        if(array_key_exists('password', $options))
+            $this->setUri($options['password']);
         return $this;
     }
 
@@ -75,6 +81,26 @@ abstract class Base {
     public function setTransport($transport){
         $this->transport = $transport !== 'https'
             ? 'http' : $transport;
+        return $this;
+    }
+
+    /**
+     * @param string $username
+     * @return $this
+     */
+    public function setUsername($username) {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * @param string $password
+     * @return $this
+     */
+    public function setPassword($password) {
+        $this->password = $password;
+
         return $this;
     }
 
