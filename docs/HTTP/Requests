@@ -30,7 +30,7 @@ $response = $request->execute();
 ```
 This is useful if you need to use a different service provider than your default at any point in the application. Options can be given to either the Request or the HttpService provider, by default, they should be passed through the Request object.
 
-## Post Requests
+## POST Requests
 
 Post requests can be handled in a few different ways for flexibility in design.
 
@@ -48,7 +48,7 @@ $request = new Request($options);
 $response = $request->execute();
 ```
 
-## Get Requests
+## GET Requests
 
 ```php
 $options = new Options\Get();
