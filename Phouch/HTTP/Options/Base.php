@@ -61,6 +61,8 @@ abstract class Base {
     }
 
     public function setPort($port){
+        $port = (string) $port;
+
         try {
             if(!ctype_digit($port)) throw new \Phouch\Exception\HTTP\Port($port);
             $this->port = $port;
