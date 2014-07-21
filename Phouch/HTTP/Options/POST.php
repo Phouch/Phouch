@@ -2,7 +2,7 @@
 
 namespace Phouch\HTTP\Options;
 
-class Post extends Base {
+class POST extends Base {
 
     private $postData = array();
 

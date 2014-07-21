@@ -61,7 +61,7 @@ class Request {
         return $this;
     }
 
-    public function setHTTPService(Service\HttpService $http_service){
+    public function setHttpService(Service\HttpService $http_service){
         $this->_http_service = $http_service;
         return $this;
     }

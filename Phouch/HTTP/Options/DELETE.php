@@ -2,8 +2,8 @@
 
 namespace Phouch\HTTP\Options;
 
-class Put extends Base {
+class DELETE extends Base {
     public function __construct(){
-        $this->method = 'PUT';
+        $this->method = 'DELETE';
     }
 }
