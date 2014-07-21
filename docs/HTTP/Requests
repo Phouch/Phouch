@@ -57,3 +57,13 @@ $options->setURI('/songs/alone_in_kyoto');
 $request = new Request($options);
 $response = $request->execute();
 ```
+
+## DELETE Requests
+
+```php
+$options = new Options\Delete();
+$options->setURI('/songs/alone_in_kyoto');
+
+$request = new Request($options);
+$response = $request->execute();
+```
