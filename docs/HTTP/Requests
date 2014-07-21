@@ -27,3 +27,22 @@ $request->setHttpService($service);
 $response = $request->execute();
 ```
 This is useful if you need to use a different service provider than your default at any point in the application. Options can be given to either the Request or the HttpService provider, by default, they should be passed through the Request object.
+
+
+
+## Post Requests
+
+Post requests can be handled in a few different ways for flexibility in design.
+
+```php
+$options = new Options\Post();
+$options->setURI('/songs')
+    ->setPostData(array(
+       'id' => 'alone in kyoto',
+       'artist' => 'air',
+       'album' => 'talkie walkie'
+));
+
+$request = new Request($options);
+$request->execute();
+```
