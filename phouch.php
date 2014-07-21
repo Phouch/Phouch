@@ -5,4 +5,8 @@ spl_autoload_register(function($class){
 });
 
 //Application configuration
+
+//HTTP - Default Provider
 define('DEFAULT_HTTP_SERVICE_PROVIDER', 'Curl');
+//HTTP - Available Providers
+define('HTTP_SERVICE_CURL', 'Curl');
