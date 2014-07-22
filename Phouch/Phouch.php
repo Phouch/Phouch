@@ -22,6 +22,26 @@
 namespace Phouch;
 
 class Phouch {
+    
+    const URI_ALL_DBS = "/_all_dbs";
+    
+    /**
+     * Phouch configuration object
+     * 
+     * @var type 
+     */
+    protected $config;
+    
+    public function __construct(array $config_array = null){
+        
+        $base_array = include '/../config/Phouch.php';
+        
+        $this->config = new Config($base_array);
+        
+        if(null !== $config_array){
+            $this->config->setFromArray($config_array);
+        }
+    }
 
     /**
      * GET _all_dbs
@@ -29,18 +49,13 @@ class Phouch {
      * @link http://wiki.apache.org/couchdb/HTTP_database_API#Working_with_Databases documentation
      * @return type Description
      */
-    public function getAllDatabases() {
+    public function getAllDatabases(){
         //This is obviously not the way we will be doing this but as a test this does get the proper response
         $options = new HTTP\Options\Get();
         
-        $options->setHost("someurl")
-            ->setTransport("https")
-            ->setUsername("someusername")
-            ->setPassword("somepassword")
-            ->setCertPath("somepathifneeded")
-            ->setURI("/_all_dbs");
+        $options->setFromPhouchConfig($this->config)->setURI(self::URI_ALL_DBS);
         
-        $http_service = new HTTP\Service\Curl();
+        $http_service = HTTP\Service\Factory::getHttpService($this->config);
 
         $http_service->setOptions($options);
 
@@ -51,23 +66,24 @@ class Phouch {
         return $response->getResponse();
     }
     
-    public function addDatabase($database) {
+    public function addDatabase($database){
 
     }
     
-    public function deleteDatabase($database) {
+    public function deleteDatabase($database){
         
     }
     
-    public function getAllDocuments($database) {
+    public function getAllDocuments($database){
         
     }
     
-    public function addDocument($document) {
+    public function addDocument($document){
         
     }
     
-    public function deleteDocument($document) {
+    public function deleteDocument($document){
         
     }
+    
 }
