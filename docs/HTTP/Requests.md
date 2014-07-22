@@ -35,7 +35,7 @@ This is useful if you need to use a different service provider than your default
 Post requests can be handled in a few different ways for flexibility in design.
 
 ```php
-$options = new Options\POST();
+$options = new Phouch\HTTP\Options\POST();
 $options->setURI('/songs')
     ->setPostData(array(
        'id' => 'alone_in_kyoto',
@@ -44,26 +44,26 @@ $options->setURI('/songs')
        'album' => 'Talkie Walkie'
 ));
 
-$request = new Request($options);
+$request = new Phouch\HTTP\Request($options);
 $response = $request->execute();
 ```
 
 ## GET Requests
 
 ```php
-$options = new Options\GET();
+$options = new Phouch\HTTP\Options\GET();
 $options->setURI('/songs/alone_in_kyoto');
 
-$request = new Request($options);
+$request = new Phouch\HTTP\Request($options);
 $response = $request->execute();
 ```
 
 ## DELETE Requests
 
 ```php
-$options = new Options\DELETE();
+$options = new Phouch\HTTP\Options\DELETE();
 $options->setURI('/songs/alone_in_kyoto');
 
-$request = new Request($options);
+$request = new Phouch\HTTP\Request($options);
 $response = $request->execute();
 ```
