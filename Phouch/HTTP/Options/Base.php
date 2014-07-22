@@ -58,6 +58,16 @@ abstract class Base {
             $this->setCertPath($options['cert_path']);
         return $this;
     }
+    
+    public function setFromPhouchConfig(\Phouch\Config $config){
+        $this->setHost($config->getHost())
+            ->setTransport($config->getTransport())
+            ->setUsername($config->getUsername())
+            ->setPassword($config->getPassword())
+            ->setCertPath($config->getCertificateFilePath());
+        
+        return $this;
+    }
 
     public function setHost($host){
         $this->host = $host;

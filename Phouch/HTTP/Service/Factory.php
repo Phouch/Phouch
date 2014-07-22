@@ -3,19 +3,13 @@
 namespace Phouch\HTTP\Service;
 
 class Factory {
-    public static function getHttpService($provider = 'default'){
-        $provider = $provider === 'default'
-            ? DEFAULT_HTTP_SERVICE_PROVIDER
-            : $provider;
-
-        switch ($provider) {
-            case HTTP_SERVICE_CURL:
-                $service = new Curl();
-            break;
-            default:
-                $service = self::getHttpService(DEFAULT_HTTP_SERVICE_PROVIDER);
-        }
-
-        return $service;
+    public static function getHttpService(\Phouch\Config $config){
+        
+        $provider_class = $config->getHttpServiceClass();
+        
+        if(!class_exists($provider_class, false))
+            throw new \Exception("Provider class '".$provider_class."' does not exist.");
+            
+        return new $provider_class;
     }
 }
