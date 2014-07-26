@@ -76,7 +76,7 @@ class Document
      */
     public function getDatabase()
     {
-        return $this->database;
+        return $this->_database;
     }
     
     /**
