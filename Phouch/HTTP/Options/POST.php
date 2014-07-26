@@ -2,20 +2,23 @@
 
 namespace Phouch\HTTP\Options;
 
-class POST extends Base {
+class Post extends OptionsAbstract
+{
+    private $_postData = array();
 
-    private $postData = array();
-
-    public function __construct(){
-        $this->method = 'POST';
+    public function __construct()
+    {
+        $this->_method = 'POST';
     }
 
-    public function setPostData(array $data){
-        $this->postData = $data;
+    public function setPostData(array $data)
+    {
+        $this->_postData = $data;
         return $this;
     }
 
-    public function getPostData(){
-        return $this->postData;
+    public function getPostData()
+    {
+        return $this->_postData;
     }
 }

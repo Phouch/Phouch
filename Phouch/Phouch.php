@@ -21,7 +21,8 @@
 
 namespace Phouch;
 
-class Phouch {
+class Phouch
+{
     
     const URI_ALL_DBS = "/_all_dbs";
     
@@ -32,7 +33,8 @@ class Phouch {
      */
     protected $config;
     
-    public function __construct(array $config_array = null){
+    public function __construct(array $config_array = null)
+    {
         
         $base_array = include '/../config/Phouch.php';
         
@@ -49,7 +51,8 @@ class Phouch {
      * @link http://wiki.apache.org/couchdb/HTTP_database_API#Working_with_Databases documentation
      * @return type Description
      */
-    public function getAllDatabases(){
+    public function getAllDatabases()
+    {
         //This is obviously not the way we will be doing this but as a test this does get the proper response
         $options = new HTTP\Options\Get();
         
@@ -66,23 +69,28 @@ class Phouch {
         return $response->getResponse();
     }
     
-    public function addDatabase($database){
-
-    }
-    
-    public function deleteDatabase($database){
+    public function addDatabase($database)
+    {
         
     }
     
-    public function getAllDocuments($database){
+    public function deleteDatabase($database)
+    {
         
     }
     
-    public function addDocument($document){
+    public function getAllDocuments($database)
+    {
         
     }
     
-    public function deleteDocument($document){
+    public function addDocument($document)
+    {
+        
+    }
+    
+    public function deleteDocument($document)
+    {
         
     }
     

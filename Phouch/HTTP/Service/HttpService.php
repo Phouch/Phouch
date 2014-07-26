@@ -1,6 +1,6 @@
 <?php
 /**
- * Phouch\HTTP\Service\HttpService interface
+ * Phouch\HTTP\Service\HttpServiceInterface
  * @description Service Interface for HTTP layer.
  *
  * The purpose of this interface is to provide a
@@ -16,16 +16,16 @@
 
 namespace Phouch\HTTP\Service;
 
-interface HttpService {
-
+interface HttpServiceInterface
+{
     /**
-     * @param \Phouch\HTTP\Options\Base $options
+     * @param \Phouch\HTTP\Options\OptionsAbstract $options
      * @description Take a Phouch\HTTP\Options object
      * and map it to the service layer's corresponding
      * values.
      * @return mixed
      */
-    public function setOptions(\Phouch\HTTP\Options\Base $options);
+    public function setOptions(\Phouch\HTTP\Options\OptionsAbstract $options);
 
     /**
      * @description Execute the HTTP Request and

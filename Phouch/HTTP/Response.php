@@ -7,7 +7,8 @@
 
 namespace Phouch\HTTP;
 
-class Response {
+class Response
+{
 
     public $response;
 
@@ -18,7 +19,8 @@ class Response {
      * HTTP\Request.
      * @param array $response
      */
-    public function __construct(array $response){
+    public function __construct(array $response)
+    {
         $this->response = $response;
     }
 

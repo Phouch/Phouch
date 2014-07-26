@@ -2,8 +2,10 @@
 
 namespace Phouch\HTTP\Options;
 
-class GET extends Base {
-    public function __construct(){
-        $this->method = 'GET';
+class Get extends OptionsAbstract
+{
+    public function __construct()
+    {
+        $this->_method = 'GET';
     }
 }

@@ -2,8 +2,10 @@
 
 namespace Phouch\HTTP\Options;
 
-class DELETE extends Base {
-    public function __construct(){
-        $this->method = 'DELETE';
+class Delete extends OptionsAbstract
+{
+    public function __construct()
+    {
+        $this->_method = 'DELETE';
     }
 }

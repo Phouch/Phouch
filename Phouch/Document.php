@@ -2,7 +2,8 @@
 
 namespace Phouch;
 
-class Document {
+class Document
+{
     protected $_uuid;
     protected $_version;
     protected $_database;
@@ -14,7 +15,8 @@ class Document {
      * @param string $uuid
      * @return \Phouch\Document
      */
-    public function setUUID($uuid) { 
+    public function setUUID($uuid)
+    {
         $this->_uuid = $uuid;
         
         return $this;
@@ -25,7 +27,8 @@ class Document {
      * 
      * @return string
      */
-    public function getUUID() {
+    public function getUUID()
+    {
         return $this->_uuid;
     }
     
@@ -35,7 +38,8 @@ class Document {
      * @param string $version
      * @return \Phouch\Document
      */
-    public function setVersion($version) {
+    public function setVersion($version)
+    {
         $this->_version = $version;
         
         return $this;
@@ -46,7 +50,8 @@ class Document {
      * 
      * @return type
      */
-    public function getVersion() {
+    public function getVersion()
+    {
         return $this->_version;
     }
 
@@ -57,7 +62,8 @@ class Document {
      * @param string $database
      * @return \Phouch\Document
      */
-    public function setDatabase($database) {
+    public function setDatabase($database)
+    {
         $this->_database = $database;
         
         return $this;
@@ -68,7 +74,8 @@ class Document {
      * 
      * @return string
      */
-    public function getDatabase() {
+    public function getDatabase()
+    {
         return $this->database;
     }
     
@@ -79,9 +86,9 @@ class Document {
      * @param mixed $value
      * @return \Phouch\Document
      */
-    public function setValue($key, $value) {
+    public function setValue($key, $value)
+    {
         $this->_values[$key] = $value;
-        
         return $this;
     }
     
@@ -92,7 +99,8 @@ class Document {
      * @return mixed
      * @throws \Phouch\Exception\Document\Value\Exception
      */
-    public function getValue($key) {
+    public function getValue($key)
+    {
         if(!isset($this->_values[$key])) {
             throw new \Phouch\Exception\Document\Value\Exception;
         }
