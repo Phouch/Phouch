@@ -15,11 +15,11 @@ namespace Phouch\HTTP\Options;
 abstract class OptionsAbstract
 {
 
-    private $host = '127.0.0.1';
-    private $port = 5984;
-    private $transport = 'http';
-    private $uri = '/';
-    protected $method;
+    private $_host = '127.0.0.1';
+    private $_port = 5984;
+    private $_transport = 'http';
+    private $_uri = '/';
+    protected $_method;
 
     /**
     * @param can be an array, or nothing.
@@ -55,13 +55,13 @@ abstract class OptionsAbstract
 
     public function setHost($host)
     {
-        $this->host = $host;
+        $this->_host = $host;
         return $this;
     }
 
     public function setURI($uri)
     {
-        $this->uri = $uri;
+        $this->_uri = $uri;
         return $this;
     }
 
@@ -69,7 +69,7 @@ abstract class OptionsAbstract
     {
         try {
             if(!ctype_digit($port)) throw new \Phouch\Exception\HTTP\Port($port);
-            $this->port = $port;
+            $this->_port = $port;
         } catch (\Phouch\Exception\HTTP\Port $invalidPortException){
             echo $invalidPortException->getMessage();
         }
@@ -78,34 +78,34 @@ abstract class OptionsAbstract
 
     public function setTransport($transport)
     {
-        $this->transport = $transport !== 'https'
+        $this->_transport = $transport !== 'https'
             ? 'http' : $transport;
         return $this;
     }
 
     public function getHost()
     {
-        return $this->host;
+        return $this->_host;
     }
 
     public function getPort()
     {
-        return $this->port;
+        return $this->_port;
     }
 
     public function getUri()
     {
-        return $this->uri;
+        return $this->_uri;
     }
 
     public function getTransport()
     {
-        return $this->transport;
+        return $this->_transport;
     }
 
     public function getMethod()
     {
-        return $this->method;
+        return $this->_method;
     }
 
 }
