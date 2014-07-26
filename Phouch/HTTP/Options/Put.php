@@ -6,6 +6,6 @@ class Put extends OptionsAbstract
 {
     public function __construct()
     {
-        $this->method = 'PUT';
+        $this->_method = 'PUT';
     }
 }
