@@ -7,7 +7,8 @@
 
 namespace Phouch\HTTP;
 
-class Response {
+class Response
+{
 
     /**
      * @description Takes either an array with key 'error'
@@ -16,7 +17,8 @@ class Response {
      * HTTP\Request.
      * @param array $response
      */
-    public function __construct(array $response){
+    public function __construct(array $response)
+    {
 
     }
 }
