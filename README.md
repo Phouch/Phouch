@@ -17,9 +17,9 @@ Requiring the Phouch library is as simple as including the phouch autoloader, af
 ```php
 require_once 'phouch.php';
 $phouch = new Phouch\Phouch(array(
-    "host" => "example.com",
-    "port" => 1234,
-    "transport" => "https"
+    'host' => 'example.com',
+    'port' => 1234,
+    'transport' => 'https'
 ));
 ```
 
@@ -40,7 +40,7 @@ Adding new databases to your CouchDB instance with Phouch is simple. We provide 
 Simply pass an array to the Phouch object, and Phouch\Phouch::addDatabase() will parse the options provided and persist the database.
 
 ```php
-$result = $phouch->addDatabase(array("name" => "songs"));
+$result = $phouch->addDatabase(array('name' => 'songs'));
 ```
 
 ####Using Objects
@@ -48,14 +48,14 @@ $result = $phouch->addDatabase(array("name" => "songs"));
 Create your own Phouch\Database object, and send it to the Phouch object to be persisted with Phouch\Phouch::save(). The Phouch Entity Objects can accept an array in their constructor to set properties for that entity.
 
 ```php
-$phouch->save(new Phouch\Database(array("name" => "songs")));
+$phouch->save(new Phouch\Database(array('name' => 'songs')));
 ```
 Equally, a full range of setters will be available to the object for integration with complex business logic in an elegant fashion.
 
 ```php
 $database = new Phouch\Database();
 
-$database->setName("songs");
+$database->setName('songs');
 
 $phouch->save($database);
 ```
@@ -68,10 +68,10 @@ Phouch will maintain two parallel patterns of thought in usage, supporting the l
 
 ```php
 $result = $phouch->addDocument(array(
-    "database" => "songs", 
-    "values" => array(
-        "title" => "Ice Ice Baby", 
-        "artist" => "Vanilla Ice")
+    'database' => 'songs', 
+    'values' => array(
+        'title' => 'Ice Ice Baby', 
+        'artist' => 'Vanilla Ice')
 ));
 ```
 
@@ -79,10 +79,10 @@ $result = $phouch->addDocument(array(
 
 ```php
 $phouch->save(new Phouch\Document(array(
-    "database" => "songs", 
-    "values" => array(
-        "title" => "Ice Ice Baby", 
-        "artist" => "Vanilla Ice")
+    'database' => 'songs', 
+    'values' => array(
+        'title' => 'Ice Ice Baby', 
+        'artist' => 'Vanilla Ice')
 ));
 ```
 
@@ -90,11 +90,11 @@ Equally, using setters on the object, and assigning the document a database from
 
 ```php
 $document = new Phouch\Document();
-$songs = new Phouch\Database(array("name" => "songs"))
+$songs = new Phouch\Database(array('name' => 'songs'))
 
 $document->setDatabase($songs);
-$document->setValue("title", "Ice Ice Baby");
-$document->setValue("artist", "Vanilla Ice");
+$document->setValue('title', 'Ice Ice Baby');
+$document->setValue('artist', 'Vanilla Ice');
 
 $phouch->save($document);
 ```
@@ -102,7 +102,7 @@ $phouch->save($document);
 Same implementation, with the document itself being added to the database, then persisted.
 
 ```php
-$database = $phouch->getDatabase("songs");
+$database = $phouch->getDatabase('songs');
 
 $database->addDocument($document);
 
