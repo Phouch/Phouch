@@ -43,7 +43,7 @@ class Curl implements HttpServiceInterface
             $opts[CURLOPT_USERPWD] = $options->getUsername() .":". $options->getPassword();
 
         if($options->getCertPath())
-            $opts[CURLOPT_CAINFO] = "/wamp/www/cacert.pem";
+            $opts[CURLOPT_CAINFO] = $options->getCertPath();
         
         $opts[CURLOPT_RETURNTRANSFER] = true;
         $opts[CURLOPT_HTTPHEADER] = array( 'Content-type: application/json', 'Accept: */*' );
