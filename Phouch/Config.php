@@ -12,7 +12,8 @@
 
 namespace Phouch;
 
-class Config {
+class Config 
+{
     public $username,
         $password,
         $host,
@@ -25,22 +26,25 @@ class Config {
     /**
      * @param array $array
      */
-    public function __construct(array $array = null){
-        
+    public function __construct(array $array = null)
+    {    
         if(null !== $array){
             $this->setFromArray($array);
         }
     }
     
-    public function getHost(){
+    public function getHost()
+    {
         return $this->host;
     }
     
-    public function getPort(){
+    public function getPort()
+    {
         return $this->port;
     }
     
-    public function getTransport(){
+    public function getTransport()
+    {
         return $this->transport;
     }
     
@@ -54,7 +58,8 @@ class Config {
         return $this->username;
     }
     
-    public function getPassword(){
+    public function getPassword()
+    {
         return $this->password;
     }
     
@@ -71,7 +76,8 @@ class Config {
      * @param array $array
      * @return \Phouch\Config
      */
-    public function setFromArray(array $array){
+    public function setFromArray(array $array) 
+    {
         foreach ($array as $key => $value) {
             if(property_exists($this, $key)){
                 $this->$key = $value;

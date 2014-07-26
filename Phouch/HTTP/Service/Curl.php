@@ -7,23 +7,27 @@
 
 namespace Phouch\HTTP\Service;
 
-use Phouch\HTTP\Options\Base as OptionsBase,
+use Phouch\HTTP\Options\OptionsAbstract as OptionsAbstract,
     Phouch\HTTP\Options\Post as OptionsPost;
 
-class Curl implements HttpService {
-    private $_curl_handle;
+class Curl implements HttpServiceInterface
+{
+    private $_curlHandle;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->setCurlHandle();
     }
 
-    public function setCurlHandle(){
-        if(!isset($this->_curl_handle))
-            $this->_curl_handle = curl_init();
+    public function setCurlHandle()
+    {
+        if(!isset($this->_curlHandle))
+            $this->_curlHandle = curl_init();
         return $this;
     }
 
-    public function setOptions(OptionsBase $options){
+    public function setOptions(OptionsAbstract $options)
+    {
         $opts = array();
 
         $opts[CURLOPT_CUSTOMREQUEST] = $options->getMethod();
@@ -47,12 +51,12 @@ class Curl implements HttpService {
         curl_setopt_array($this->_curl_handle, $opts);
     }
 
-    public function execute(){
+    public function execute()
+    {
         $response = curl_exec($this->_curl_handle);
 
         if(!$response) {
             $status_code = curl_getinfo($this->_curl_handle, CURLINFO_HTTP_CODE);
-
             throw new \Exception("Curl error: " . curl_error($this->_curl_handle), $status_code);
         }
         

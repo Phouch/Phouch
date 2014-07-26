@@ -2,8 +2,10 @@
 
 namespace Phouch\HTTP\Options;
 
-class PUT extends Base {
-    public function __construct(){
-        $this->method = 'PUT';
+class Put extends OptionsAbstract
+{
+    public function __construct()
+    {
+        $this->_method = 'PUT';
     }
 }

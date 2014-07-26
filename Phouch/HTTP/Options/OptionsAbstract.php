@@ -1,6 +1,6 @@
 <?php
 /**
- * Phouch\HTTP\Options\Base
+ * Phouch\HTTP\Options\OptionsAbstract
  * @author Dustin Moorman <dustin.moorman@gmail.com>
  * @description HTTP options, should encompass:
  * - transport method (http / https)
@@ -12,27 +12,26 @@
 
 namespace Phouch\HTTP\Options;
 
-abstract class Base {
+abstract class OptionsAbstract
+{
 
-    private $host = '127.0.0.1';
-    private $port = null;
-    private $transport = 'http';
-    private $uri = '/';
-    private $username = null;
-    private $password = null;
-    private $cert_path = null;
-    protected $method;
+    private $_host = '127.0.0.1';
+    private $_port = 5984;
+    private $_transport = 'http';
+    private $_uri = '/';
+    protected $_method;
 
     /**
-     * @param can be an array, or nothing.
-     *
-     * If array, will look for keys transport, host, and port,
-     * and will set accordingly.
-     *
-     * If nothing, will assume values as default, or that the
-     * user will set options with a setter.
-     */
-    public function __construct(){
+    * @param can be an array, or nothing.
+    *
+    * If array, will look for keys transport, host, and port,
+    * and will set accordingly.
+    *
+    * If nothing, will assume values as default, or that the
+    * user will set options with a setter.
+    */
+    public function __construct()
+    {
         if(func_num_args() > 0){
             $arg0 = func_get_arg(0);
             if(is_array($arg0))
@@ -41,7 +40,8 @@ abstract class Base {
         return $this;
     }
 
-    public function setWithArray(array $options){
+    public function setWithArray(array $options)
+    {
         if(array_key_exists('port', $options))
             $this->setPort($options['port']);
         if(array_key_exists('transport', $options))
@@ -59,7 +59,8 @@ abstract class Base {
         return $this;
     }
     
-    public function setFromPhouchConfig(\Phouch\Config $config){
+    public function setFromPhouchConfig(\Phouch\Config $config)
+    {
         $this->setHost($config->getHost())
             ->setTransport($config->getTransport())
             ->setUsername($config->getUsername())
@@ -69,30 +70,34 @@ abstract class Base {
         return $this;
     }
 
-    public function setHost($host){
-        $this->host = $host;
+    public function setHost($host)
+    {
+        $this->_host = $host;
         return $this;
     }
 
-    public function setURI($uri){
-        $this->uri = $uri;
+    public function setURI($uri)
+    {
+        $this->_uri = $uri;
         return $this;
     }
 
-    public function setPort($port){
+    public function setPort($port)
+    {
         $port = (string) $port;
 
         try {
             if(!ctype_digit($port)) throw new \Phouch\Exception\HTTP\Port($port);
-            $this->port = $port;
+            $this->_port = $port;
         } catch (\Phouch\Exception\HTTP\Port $invalidPortException){
             echo $invalidPortException->getMessage();
         }
         return $this;
     }
 
-    public function setTransport($transport){
-        $this->transport = $transport !== 'https'
+    public function setTransport($transport)
+    {
+        $this->_transport = $transport !== 'https'
             ? 'http' : $transport;
         return $this;
     }
@@ -101,9 +106,9 @@ abstract class Base {
      * @param string $username
      * @return $this
      */
-    public function setUsername($username) {
+    public function setUsername($username)
+    {
         $this->username = $username;
-
         return $this;
     }
 
@@ -111,44 +116,41 @@ abstract class Base {
      * @param string $password
      * @return $this
      */
-    public function setPassword($password) {
+    public function setPassword($password) 
+    {
         $this->password = $password;
-
         return $this;
     }
 
-    public function setCertPath($cert_path) {
+    public function setCertPath($cert_path) 
+    {
         $this->cert_path = $cert_path;
-
         return $this;
     }
 
-    public function getHost(){
-        return $this->host;
+    public function getHost()
+    {
+        return $this->_host;
     }
 
-    public function getPort(){
-        return $this->port;
+    public function getPort()
+    {
+        return $this->_port;
     }
 
-    public function getUri(){
-        return $this->uri;
+    public function getUri()
+    {
+        return $this->_uri;
     }
 
-    public function getTransport(){
-        return $this->transport;
+    public function getTransport()
+    {
+        return $this->_transport;
     }
 
-    public function getMethod(){
-        return $this->method;
-    }
-
-    public function getUsername(){
-        return $this->username;
-    }
-
-    public function getPassword(){
-        return $this->password;
+    public function getMethod()
+    {
+        return $this->_method;
     }
     
     public function getCertPath(){
