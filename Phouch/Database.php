@@ -6,7 +6,8 @@ namespace Phouch;
  * @todo Are we going to add docs here or create a different 
  *       object that includes those for persistence?
  */
-class Database {
+class Database
+{
     protected $_name;
     
     /**
@@ -15,7 +16,8 @@ class Database {
      * @param string $name
      * @return \Phouch\Database
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->_name = $name;
         
         return $this;
@@ -26,7 +28,8 @@ class Database {
      * 
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->_name;
     }
 }
