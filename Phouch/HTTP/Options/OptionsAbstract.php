@@ -12,7 +12,8 @@
 
 namespace Phouch\HTTP\Options;
 
-abstract class OptionsAbstract {
+abstract class OptionsAbstract
+{
 
     private $host = '127.0.0.1';
     private $port = 5984;
@@ -29,7 +30,8 @@ abstract class OptionsAbstract {
     * If nothing, will assume values as default, or that the
     * user will set options with a setter.
     */
-    public function __construct(){
+    public function __construct()
+    {
         if(func_num_args() > 0){
             $arg0 = func_get_arg(0);
             if(is_array($arg0))
@@ -38,7 +40,8 @@ abstract class OptionsAbstract {
         return $this;
     }
 
-    public function setWithArray(array $options){
+    public function setWithArray(array $options)
+    {
         if(array_key_exists('port', $options))
             $this->setPort($options['port']);
         if(array_key_exists('transport', $options))
@@ -50,17 +53,20 @@ abstract class OptionsAbstract {
         return $this;
     }
 
-    public function setHost($host){
+    public function setHost($host)
+    {
         $this->host = $host;
         return $this;
     }
 
-    public function setURI($uri){
+    public function setURI($uri)
+    {
         $this->uri = $uri;
         return $this;
     }
 
-    public function setPort($port){
+    public function setPort($port)
+    {
         try {
             if(!ctype_digit($port)) throw new \Phouch\Exception\HTTP\Port($port);
             $this->port = $port;
@@ -70,29 +76,35 @@ abstract class OptionsAbstract {
         return $this;
     }
 
-    public function setTransport($transport){
+    public function setTransport($transport)
+    {
         $this->transport = $transport !== 'https'
             ? 'http' : $transport;
         return $this;
     }
 
-    public function getHost(){
+    public function getHost()
+    {
         return $this->host;
     }
 
-    public function getPort(){
+    public function getPort()
+    {
         return $this->port;
     }
 
-    public function getUri(){
+    public function getUri()
+    {
         return $this->uri;
     }
 
-    public function getTransport(){
+    public function getTransport()
+    {
         return $this->transport;
     }
 
-    public function getMethod(){
+    public function getMethod()
+    {
         return $this->method;
     }
 
