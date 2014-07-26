@@ -7,7 +7,7 @@
 
 namespace Phouch\HTTP\Service;
 
-class Curl implements HttpService
+class Curl implements HttpServiceInterface
 {
     private $_curlHandle;
 
