@@ -1,6 +1,6 @@
 <?php
 /**
- * Phouch\HTTP\Options\Base
+ * Phouch\HTTP\Options\OptionsAbstract
  * @author Dustin Moorman <dustin.moorman@gmail.com>
  * @description HTTP options, should encompass:
  * - transport method (http / https)
@@ -12,7 +12,7 @@
 
 namespace Phouch\HTTP\Options;
 
-abstract class Base {
+abstract class OptionsAbstract {
 
     private $host = '127.0.0.1';
     private $port = 5984;
