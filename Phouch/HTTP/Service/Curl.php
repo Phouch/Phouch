@@ -18,7 +18,7 @@ class Curl implements HttpServiceInterface
 
     public function setCurlHandle()
     {
-        if(!isset($this->_curl_handle))
+        if(!isset($this->_curlHandle))
             $this->_curlHandle = curl_init();
         return $this;
     }
