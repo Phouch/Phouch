@@ -2,7 +2,8 @@
 
 namespace Phouch\Model;
 
-class Document extends Base {
+class Document extends ModelAbstract
+{
     protected $_database;
     protected $_values;
     
@@ -12,9 +13,9 @@ class Document extends Base {
      * @param string $database
      * @return \Phouch\Model\Document
      */
-    public function setDatabase($database) {
+    public function setDatabase($database)
+    {
         $this->_database = $database;
-        
         return $this;
     }
     
@@ -23,7 +24,8 @@ class Document extends Base {
      * 
      * @return string
      */
-    public function getDatabase() {
+    public function getDatabase()
+    {
         return $this->_database;
     }
 }
