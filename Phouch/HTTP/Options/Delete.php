@@ -6,6 +6,6 @@ class Delete extends OptionsAbstract
 {
     public function __construct()
     {
-        $this->method = 'DELETE';
+        $this->_method = 'DELETE';
     }
 }
