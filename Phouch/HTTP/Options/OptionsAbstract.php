@@ -50,6 +50,23 @@ abstract class OptionsAbstract
             $this->setHost($options['host']);
         if(array_key_exists('uri', $options))
             $this->setUri($options['uri']);
+        if(array_key_exists('username', $options))
+            $this->setUsername($options['username']);
+        if(array_key_exists('password', $options))
+            $this->setPassword($options['password']);
+        if(array_key_exists('cert_path', $options))
+            $this->setCertPath($options['cert_path']);
+        return $this;
+    }
+    
+    public function setFromPhouchConfig(\Phouch\Config $config)
+    {
+        $this->setHost($config->getHost())
+            ->setTransport($config->getTransport())
+            ->setUsername($config->getUsername())
+            ->setPassword($config->getPassword())
+            ->setCertPath($config->getCertificateFilePath());
+        
         return $this;
     }
 
@@ -67,6 +84,8 @@ abstract class OptionsAbstract
 
     public function setPort($port)
     {
+        $port = (string) $port;
+
         try {
             if(!ctype_digit($port)) throw new \Phouch\Exception\HTTP\Port($port);
             $this->_port = $port;
@@ -80,6 +99,32 @@ abstract class OptionsAbstract
     {
         $this->_transport = $transport !== 'https'
             ? 'http' : $transport;
+        return $this;
+    }
+
+    /**
+     * @param string $username
+     * @return $this
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    /**
+     * @param string $password
+     * @return $this
+     */
+    public function setPassword($password) 
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    public function setCertPath($cert_path) 
+    {
+        $this->cert_path = $cert_path;
         return $this;
     }
 
@@ -106,6 +151,10 @@ abstract class OptionsAbstract
     public function getMethod()
     {
         return $this->_method;
+    }
+    
+    public function getCertPath(){
+        return $this->cert_path;
     }
 
 }

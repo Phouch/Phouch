@@ -24,6 +24,27 @@ namespace Phouch;
 class Phouch
 {
     
+    const URI_ALL_DBS = "/_all_dbs";
+    
+    /**
+     * Phouch configuration object
+     * 
+     * @var type 
+     */
+    protected $config;
+    
+    public function __construct(array $config_array = null)
+    {
+        
+        $base_array = include '/../config/Phouch.php';
+        
+        $this->config = new Config($base_array);
+        
+        if(null !== $config_array){
+            $this->config->setFromArray($config_array);
+        }
+    }
+
     /**
      * GET _all_dbs
      * 
@@ -32,7 +53,20 @@ class Phouch
      */
     public function getAllDatabases()
     {
+        //This is obviously not the way we will be doing this but as a test this does get the proper response
+        $options = new HTTP\Options\Get();
         
+        $options->setFromPhouchConfig($this->config)->setURI(self::URI_ALL_DBS);
+        
+        $http_service = HTTP\Service\Factory::getHttpService($this->config);
+
+        $http_service->setOptions($options);
+
+        $request = new HTTP\Request($options, $http_service);
+
+        $response = $request->execute();
+
+        return $response->getResponse();
     }
     
     public function addDatabase($database)
@@ -59,4 +93,5 @@ class Phouch
     {
         
     }
+    
 }

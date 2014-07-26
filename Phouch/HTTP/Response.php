@@ -10,6 +10,8 @@ namespace Phouch\HTTP;
 class Response
 {
 
+    public $response;
+
     /**
      * @description Takes either an array with key 'error'
      * and value of the Exception's message, or the array
@@ -19,6 +21,10 @@ class Response
      */
     public function __construct(array $response)
     {
+        $this->response = $response;
+    }
 
+    public function getResponse() {
+        return $this->response;
     }
 }
