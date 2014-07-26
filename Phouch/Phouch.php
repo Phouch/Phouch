@@ -21,7 +21,8 @@
 
 namespace Phouch;
 
-class Phouch {
+class Phouch
+{
     
     /**
      * GET _all_dbs
@@ -29,27 +30,33 @@ class Phouch {
      * @link http://wiki.apache.org/couchdb/HTTP_database_API#Working_with_Databases documentation
      * @return type Description
      */
-    public function getAllDatabases() {
+    public function getAllDatabases()
+    {
         
     }
     
-    public function addDatabase($database) {
+    public function addDatabase($database)
+    {
         
     }
     
-    public function deleteDatabase($database) {
+    public function deleteDatabase($database)
+    {
         
     }
     
-    public function getAllDocuments($database) {
+    public function getAllDocuments($database)
+    {
         
     }
     
-    public function addDocument($document) {
+    public function addDocument($document)
+    {
         
     }
     
-    public function deleteDocument($document) {
+    public function deleteDocument($document)
+    {
         
     }
 }
