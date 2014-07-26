@@ -6,6 +6,6 @@ class Get extends OptionsAbstract
 {
     public function __construct()
     {
-        $this->method = 'GET';
+        $this->_method = 'GET';
     }
 }
