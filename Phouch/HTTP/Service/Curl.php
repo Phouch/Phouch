@@ -7,20 +7,24 @@
 
 namespace Phouch\HTTP\Service;
 
-class Curl implements HttpService {
-    private $_curl_handle;
+class Curl implements HttpService
+{
+    private $_curlHandle;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->setCurlHandle();
     }
 
-    public function setCurlHandle(){
+    public function setCurlHandle()
+    {
         if(!isset($this->_curl_handle))
-            $this->_curl_handle = curl_init();
+            $this->_curlHandle = curl_init();
         return $this;
     }
 
-    public function setOptions(\Phouch\HTTP\Options\Base $options){
+    public function setOptions(\Phouch\HTTP\Options\OptionsAbstract $options)
+    {
         $opts = array();
 
         $opts[CURLOPT_CUSTOMREQUEST] = $options->getMethod();
@@ -32,10 +36,11 @@ class Curl implements HttpService {
         if($options instanceof \Phouch\HTTP\Options\Post)
             $opts[CURLOPT_POSTFIELDS] = json_encode($options->getPostData());
 
-        curl_setopt_array($this->_curl_handle, $opts);
+        curl_setopt_array($this->_curlHandle, $opts);
     }
 
-    public function execute(){
-        return json_decode(curl_exec($this->_curl_handle), true);
+    public function execute()
+    {
+        return json_decode(curl_exec($this->_curlHandle), true);
     }
 }
