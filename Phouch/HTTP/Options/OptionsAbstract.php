@@ -19,6 +19,7 @@ abstract class OptionsAbstract
     private $_port = 5984;
     private $_transport = 'http';
     private $_uri = '/';
+    private $_certPath;
     protected $_method;
 
     /**
@@ -124,7 +125,7 @@ abstract class OptionsAbstract
 
     public function setCertPath($cert_path) 
     {
-        $this->cert_path = $cert_path;
+        $this->_certPath = $cert_path;
         return $this;
     }
 
@@ -154,7 +155,7 @@ abstract class OptionsAbstract
     }
     
     public function getCertPath(){
-        return $this->cert_path;
+        return $this->_certPath;
     }
 
 }
