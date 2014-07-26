@@ -12,6 +12,7 @@
 
 namespace Phouch;
 
-class Config {
+class Config
+{
 
 }
