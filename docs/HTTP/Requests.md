@@ -39,7 +39,7 @@ $options = new Phouch\HTTP\Options\POST();
 $options->setURI('/songs')
     ->setPostData(array(
        'id' => 'alone_in_kyoto',
-       'title' => 'Alone in Kyoto
+       'title' => 'Alone in Kyoto'
        'artist' => 'Air',
        'album' => 'Talkie Walkie'
 ));
