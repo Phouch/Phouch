@@ -37,8 +37,18 @@ class Curl implements HttpServiceInterface
             . ($options->getPort() ? ':' . $options->getPort() : "")
             . $options->getUri();
 
-        if($options instanceof OptionsPost || $options instanceof OptionsPut)
+        if($options instanceof OptionsPost || $options instanceof OptionsPut){
             $opts[CURLOPT_POSTFIELDS] = json_encode($options->getPayload());
+            $opts[CURLOPT_HTTPHEADER] = array(
+                'Content-type: multipart/form-data; boundary=--phouch-bound-xxx',
+                'Accept: */*',
+                'Referer: ' . $opts[CURLOPT_URL],
+                'Content-Disposition: form-data;'
+            );
+        } else {
+            $opts[CURLOPT_HTTPHEADER] = array( 'Content-type: application/json', 'Accept: */*' );
+        }
+
 
         if($options->getUsername() && $options->getPassword())
             $opts[CURLOPT_USERPWD] = $options->getUsername() .":". $options->getPassword();
@@ -47,7 +57,6 @@ class Curl implements HttpServiceInterface
             $opts[CURLOPT_CAINFO] = $options->getCertPath();
         
         $opts[CURLOPT_RETURNTRANSFER] = true;
-        $opts[CURLOPT_HTTPHEADER] = array( 'Content-type: application/json', 'Accept: */*' );
 
         curl_setopt_array($this->_curlHandle, $opts);
     }
