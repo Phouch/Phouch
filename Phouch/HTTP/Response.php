@@ -9,22 +9,19 @@ namespace Phouch\HTTP;
 
 class Response
 {
-
-    public $response;
-
     /**
      * @description Takes either an array with key 'error'
      * and value of the Exception's message, or the array
      * provided from CouchDB after execution of an
-     * HTTP\Request.
+     * HTTP\Request. If Couch errors, the 'error' key will
+     * be natively present from CouchDB.
      * @param array $response
      */
     public function __construct(array $response)
     {
-        $this->response = $response;
+        foreach($response as $k => $v){
+            $this->$k = $v;
+        }
     }
 
-    public function getResponse() {
-        return $this->response;
-    }
 }
