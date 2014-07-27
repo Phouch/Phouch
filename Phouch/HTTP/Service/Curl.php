@@ -8,7 +8,8 @@
 namespace Phouch\HTTP\Service;
 
 use Phouch\HTTP\Options\OptionsAbstract as OptionsAbstract,
-    Phouch\HTTP\Options\Post as OptionsPost;
+    Phouch\HTTP\Options\Post as OptionsPost,
+    Phouch\HTTP\Options\Put as OptionsPut;
 
 class Curl implements HttpServiceInterface
 {
@@ -36,8 +37,8 @@ class Curl implements HttpServiceInterface
             . ($options->getPort() ? ':' . $options->getPort() : "")
             . $options->getUri();
 
-        if($options instanceof OptionsPost)
-            $opts[CURLOPT_POSTFIELDS] = json_encode($options->getPostData());
+        if($options instanceof OptionsPost || $options instanceof OptionsPut)
+            $opts[CURLOPT_POSTFIELDS] = json_encode($options->getPayload());
 
         if($options->getUsername() && $options->getPassword())
             $opts[CURLOPT_USERPWD] = $options->getUsername() .":". $options->getPassword();
