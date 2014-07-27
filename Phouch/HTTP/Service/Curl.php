@@ -48,16 +48,16 @@ class Curl implements HttpServiceInterface
         $opts[CURLOPT_RETURNTRANSFER] = true;
         $opts[CURLOPT_HTTPHEADER] = array( 'Content-type: application/json', 'Accept: */*' );
 
-        curl_setopt_array($this->_curl_handle, $opts);
+        curl_setopt_array($this->_curlHandle, $opts);
     }
 
     public function execute()
     {
-        $response = curl_exec($this->_curl_handle);
+        $response = curl_exec($this->_curlHandle);
 
         if(!$response) {
-            $status_code = curl_getinfo($this->_curl_handle, CURLINFO_HTTP_CODE);
-            throw new \Exception("Curl error: " . curl_error($this->_curl_handle), $status_code);
+            $status_code = curl_getinfo($this->_curlHandle, CURLINFO_HTTP_CODE);
+            throw new \Exception("Curl error: " . curl_error($this->_curlHandle), $status_code);
         }
         
         return json_decode($response, true);

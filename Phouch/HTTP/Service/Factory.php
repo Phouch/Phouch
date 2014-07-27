@@ -7,7 +7,7 @@ class Factory {
         
         $provider_class = $config->getHttpServiceClass();
         
-        if(!class_exists($provider_class, false))
+        if(!class_exists($provider_class))
             throw new \Exception("Provider class '".$provider_class."' does not exist.");
             
         return new $provider_class;
