@@ -20,6 +20,8 @@ abstract class OptionsAbstract
     private $_transport = 'http';
     private $_uri = '/';
     private $_certPath;
+    private $_username;
+    private $_password;
     protected $_method;
 
     /**
@@ -109,7 +111,7 @@ abstract class OptionsAbstract
      */
     public function setUsername($username)
     {
-        $this->username = $username;
+        $this->_username = $username;
         return $this;
     }
 
@@ -119,7 +121,7 @@ abstract class OptionsAbstract
      */
     public function setPassword($password) 
     {
-        $this->password = $password;
+        $this->_password = $password;
         return $this;
     }
 
@@ -152,6 +154,16 @@ abstract class OptionsAbstract
     public function getMethod()
     {
         return $this->_method;
+    }
+
+    public function getUsername()
+    {
+        return $this->_username;
+    }
+
+    public function getPassword()
+    {
+        return $this->_password;
     }
     
     public function getCertPath(){
