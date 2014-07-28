@@ -25,11 +25,12 @@ class Phouch
 {
     
     const URI_ALL_DBS = "/_all_dbs";
+    const URI_ALL_DOCS = "_all_docs";
     
     /**
      * Phouch configuration object
      * 
-     * @var type 
+     * @var Config
      */
     protected $config;
     
@@ -57,6 +58,95 @@ class Phouch
         
         $options->setFromPhouchConfig($this->config)->setURI(self::URI_ALL_DBS);
 
+        return $this->execute($options);
+    }
+
+    /**
+     * @param string|Database $database
+     * @return HTTP\Response
+     */
+    public function addDatabase($database)
+    {
+        $database = $this->createDatabaseFromMixed($database);
+        //todo: validate database
+
+        $options = new HTTP\Options\Put();
+
+        $options->setFromPhouchConfig($this->config)->setURI("/".$database->getName());
+
+        return $this->execute($options);
+    }
+    
+    public function deleteDatabase($database)
+    {
+        $database = $this->createDatabaseFromMixed($database);
+        //todo: validate database
+
+        $options = new HTTP\Options\Delete();
+
+        $options->setFromPhouchConfig($this->config)->setURI("/".$database->getName());
+
+        return $this->execute($options);
+    }
+    
+    public function getAllDocuments($database)
+    {
+        $database = $this->createDatabaseFromMixed($database);
+        //todo: validate database
+
+        $options = new HTTP\Options\Get();
+
+        $options->setFromPhouchConfig($this->config)->setURI("/".$database->getName()."/".self::URI_ALL_DOCS);
+
+        return $this->execute($options);
+    }
+
+    public function getDocument($document)
+    {
+        $document = $this->createDocumentFromMixed($document);
+
+        $options = new HTTP\Options\Get();
+
+        $uri = "/".$document->getDatabase()."/".$document->getUUID();
+
+        if($document->getVersion())
+            $uri .= "?rev=".$document->getVersion();
+
+        $options->setFromPhouchConfig($this->config)->setURI($uri);
+
+        return $this->execute($options);
+    }
+    
+    public function addDocument($document)
+    {
+        $document = $this->createDocumentFromMixed($document);
+        //todo: validate document
+
+        $options = new HTTP\Options\Put();
+
+        $options->setPayload($document->getValues());
+
+        $options->setFromPhouchConfig($this->config)->setURI("/".$document->getDatabase()."/".$document->getUUID());
+
+        return $this->execute($options);
+    }
+    
+    public function deleteDocument($document)
+    {
+        $document = $this->createDocumentFromMixed($document);
+        //todo: validate document
+
+        $options = new HTTP\Options\Delete();
+
+        $rev = $document->getVersion() ? $document->getVersion() : $this->getDocument($document)->_rev;
+
+        $options->setFromPhouchConfig($this->config)->setURI("/".$document->getDatabase()."/".$document->getUUID()."?rev=".$rev);
+
+        return $this->execute($options);
+    }
+
+    protected function execute(Http\Options\OptionsAbstract $options)
+    {
         $http_service = HTTP\Service\Factory::getHttpService($this->config);
 
         $http_service->setOptions($options);
@@ -67,30 +157,42 @@ class Phouch
 
         return $response;
     }
-    
-    public function addDatabase($database)
+
+    /**
+     * @param string|array|Document $database
+     * @return Database
+     * @throws \InvalidArgumentException
+     * @todo Make a Database factory?
+     */
+    protected function createDatabaseFromMixed($database)
     {
-        
+        if($database instanceof Database)
+            return $database;
+
+        if(is_array($database))
+            return new Database($database);
+
+        if(is_string($database))
+            return new Database(array("name" => $database));
+
+        throw new \InvalidArgumentException("Could not create database");
     }
-    
-    public function deleteDatabase($database)
+
+    /**
+     * @param array|Document $document
+     * @return Document
+     * @throws \InvalidArgumentException
+     * @todo Make a Document factory?
+     */
+    protected function createDocumentFromMixed($document)
     {
-        
-    }
-    
-    public function getAllDocuments($database)
-    {
-        
-    }
-    
-    public function addDocument($document)
-    {
-        
-    }
-    
-    public function deleteDocument($document)
-    {
-        
+        if($document instanceof Document)
+            return $document;
+
+        if(is_array($document))
+            return new Document($document);
+
+        throw new \InvalidArgumentException("Could not create document");
     }
     
 }
