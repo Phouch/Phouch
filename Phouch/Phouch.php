@@ -49,15 +49,14 @@ class Phouch
      * GET _all_dbs
      * 
      * @link http://wiki.apache.org/couchdb/HTTP_database_API#Working_with_Databases documentation
-     * @return type Description
+     * @return HTTP\Response Description
      */
     public function getAllDatabases()
     {
-        //This is obviously not the way we will be doing this but as a test this does get the proper response
         $options = new HTTP\Options\Get();
         
         $options->setFromPhouchConfig($this->config)->setURI(self::URI_ALL_DBS);
-        
+
         $http_service = HTTP\Service\Factory::getHttpService($this->config);
 
         $http_service->setOptions($options);
@@ -66,7 +65,7 @@ class Phouch
 
         $response = $request->execute();
 
-        return $response->getResponse();
+        return $response;
     }
     
     public function addDatabase($database)
