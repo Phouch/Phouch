@@ -12,6 +12,8 @@
 
 namespace Phouch\HTTP\Options;
 
+use Phouch\Exception\HTTP\Port as PortException;
+
 abstract class OptionsAbstract
 {
 
@@ -43,6 +45,10 @@ abstract class OptionsAbstract
         return $this;
     }
 
+    /**
+     * @param array $options
+     * @return $this
+     */
     public function setWithArray(array $options)
     {
         if(array_key_exists('port', $options))
@@ -61,10 +67,15 @@ abstract class OptionsAbstract
             $this->setCertPath($options['cert_path']);
         return $this;
     }
-    
+
+    /**
+     * @param \Phouch\Config $config
+     * @return $this
+     */
     public function setFromPhouchConfig(\Phouch\Config $config)
     {
         $this->setHost($config->getHost())
+            ->setPort($config->getPort())
             ->setTransport($config->getTransport())
             ->setUsername($config->getUsername())
             ->setPassword($config->getPassword())
@@ -73,31 +84,53 @@ abstract class OptionsAbstract
         return $this;
     }
 
+    /**
+     * @param string $host
+     * @return $this
+     */
     public function setHost($host)
     {
         $this->_host = $host;
         return $this;
     }
 
+    /**
+     * @param string $uri
+     * @return $this
+     */
     public function setURI($uri)
     {
         $this->_uri = $uri;
         return $this;
     }
 
+    /**
+     * @param null|string|int $port
+     * @return $this
+     * @throws
+     */
     public function setPort($port)
     {
-        $port = (string) $port;
+        if(!$port === null)
+        {
+            $port = (string) $port;
 
-        try {
-            if(!ctype_digit($port)) throw new \Phouch\Exception\HTTP\Port($port);
-            $this->_port = $port;
-        } catch (\Phouch\Exception\HTTP\Port $invalidPortException){
-            echo $invalidPortException->getMessage();
+            try {
+                if(!ctype_digit($port)) throw new PortException($port);
+            } catch (PortException $invalidPortException){
+                echo $invalidPortException->getMessage();
+            }
         }
+
+        $this->_port = $port;
+
         return $this;
     }
 
+    /**
+     * @param string $transport 'http' or 'https'
+     * @return $this
+     */
     public function setTransport($transport)
     {
         $this->_transport = $transport !== 'https'
@@ -125,6 +158,10 @@ abstract class OptionsAbstract
         return $this;
     }
 
+    /**
+     * @param null|string $cert_path
+     * @return $this
+     */
     public function setCertPath($cert_path) 
     {
         $this->_certPath = $cert_path;
