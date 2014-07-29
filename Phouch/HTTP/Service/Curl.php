@@ -40,8 +40,7 @@ class Curl implements HttpServiceInterface
         if($options instanceof OptionsPost || $options instanceof OptionsPut){
             $opts[CURLOPT_POSTFIELDS] = json_encode($options->getPayload());
             $opts[CURLOPT_HTTPHEADER] = array(
-                'Content-type: multipart/form-data; boundary=--phouch-bound-xxx',
-                'Accept: */*',
+                'Content-type: application/json', 'Accept: */*',
                 'Referer: ' . $opts[CURLOPT_URL],
                 'Content-Disposition: form-data;'
             );

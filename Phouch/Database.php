@@ -9,6 +9,12 @@ namespace Phouch;
 class Database
 {
     protected $_name;
+
+    public function __construct(array $array = array())
+    {
+        if(isset($array["name"]))
+            $this->setName($array["name"]);
+    }
     
     /**
      * Set the database name

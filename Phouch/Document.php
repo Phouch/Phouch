@@ -8,6 +8,18 @@ class Document
     protected $_version;
     protected $_database;
     protected $_values = array();
+
+    public function __construct(array $array =  array())
+    {
+        if(isset($array["uuid"]))
+            $this->setUUID($array["uuid"]);
+        if(isset($array["version"]))
+            $this->setVersion($array["version"]);
+        if(isset($array["database"]))
+            $this->setDatabase($array["database"]);
+        if(isset($array["values"]) && is_array($array["values"]))
+            $this->setValues($array["values"]);
+    }
     
     /**
      * Set unique identifier
@@ -91,6 +103,17 @@ class Document
         $this->_values[$key] = $value;
         return $this;
     }
+
+    /**
+     * @param array $array
+     * @return $this
+     */
+    public function setValues(array $array)
+    {
+        $this->_values = $array;
+
+        return $this;
+    }
     
     /**
      * Get a document value by key
@@ -106,5 +129,13 @@ class Document
         }
         
         return $this->_values[$key];
+    }
+
+    /**
+     * @return array
+     */
+    public function getValues()
+    {
+        return $this->_values;
     }
 }

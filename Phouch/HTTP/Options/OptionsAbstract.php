@@ -203,8 +203,14 @@ abstract class OptionsAbstract
         return $this->_password;
     }
     
-    public function getCertPath(){
+    public function getCertPath()
+    {
         return $this->_certPath;
+    }
+
+    public function getPayload()
+    {
+        throw new \Exception("No Payload in ".$this->_method." request");
     }
 
 }
