@@ -3,10 +3,13 @@
 class RequestTest extends PHPUnit_Framework_TestCase {
 
     public function testUnconfiguredExecution(){
+
         $req = new \Phouch\HTTP\Request();
+        $expectedException = new \Phouch\Exception\HTTP\Options\NotSet();
+
         $response = $req->execute();
 
         $this->assertTrue($response->hasError());
-        $this->assertEquals('HTTP Options not set.', $response->getError());
+        $this->assertEquals($expectedException->getMessage(), $response->getError());
     }
 }
