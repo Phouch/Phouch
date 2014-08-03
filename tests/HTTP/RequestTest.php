@@ -2,7 +2,7 @@
 
 class RequestTest extends PHPUnit_Framework_TestCase {
 
-    public function testUnconfiguredExecution(){
+    public function testRequestWithUnsetHTTPOptions(){
 
         $req = new \Phouch\HTTP\Request();
         $expectedException = new \Phouch\Exception\HTTP\Options\NotSet();
