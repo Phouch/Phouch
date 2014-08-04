@@ -9,6 +9,7 @@ class Put extends OptionsAbstract
     public function __construct()
     {
         $this->_method = 'PUT';
+        parent::__construct(func_get_args());
     }
 
     public function setPayload(array $data)
