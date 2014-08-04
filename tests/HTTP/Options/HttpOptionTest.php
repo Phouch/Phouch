@@ -8,6 +8,7 @@ class HttpOptionTest extends PHPUnit_Framework_TestCase {
         ));
 
         $this->assertEquals('tau.pe',$httpPOST->getHost());
+        $this->assertEquals(80, $httpPOST->getPort());
 
     }
 }
