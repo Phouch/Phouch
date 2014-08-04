@@ -9,6 +9,12 @@ class Post extends OptionsAbstract
     public function __construct()
     {
         $this->_method = 'POST';
+
+        if(func_num_args() > 0){
+            $arg0 = func_get_arg(0);
+            if(is_array($arg0))
+                $this->setWithArray($arg0);
+        }
     }
 
     public function setPayload(array $data)
