@@ -32,6 +32,11 @@ abstract class OptionsAbstract
     * If array, will look for keys transport, host, and port,
     * and will set accordingly.
     *
+    * If HTTP\Options, will set from values the passed object
+    * holds.
+    *
+    * If Phouch\Config, will set from configuration data.
+    *
     * If nothing, will assume values as default, or that the
     * user will set options with a setter.
     */
