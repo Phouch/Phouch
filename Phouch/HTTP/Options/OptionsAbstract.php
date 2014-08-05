@@ -35,13 +35,11 @@ abstract class OptionsAbstract
     * If nothing, will assume values as default, or that the
     * user will set options with a setter.
     */
-    public function __construct()
+    public function __construct($options = null)
     {
-        if(func_num_args() > 0){
-            $arg0 = func_get_arg(0);
-            if(is_array($arg0))
-                $this->setWithArray($arg0);
-        }
+        if(is_array($options))
+            $this->setWithArray($options);
+
         return $this;
     }
 
