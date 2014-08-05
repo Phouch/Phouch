@@ -38,7 +38,7 @@ abstract class OptionsAbstract
     public function __construct($options = null)
     {
         if(is_array($options))
-            $this->setWithArray($options);
+            $this->setFromArray($options);
 
         return $this;
     }
@@ -47,7 +47,7 @@ abstract class OptionsAbstract
      * @param array $options
      * @return $this
      */
-    public function setWithArray(array $options)
+    public function setFromArray(array $options)
     {
         if(array_key_exists('port', $options))
             $this->setPort($options['port']);
