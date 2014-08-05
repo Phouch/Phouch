@@ -32,16 +32,25 @@ abstract class OptionsAbstract
     * If array, will look for keys transport, host, and port,
     * and will set accordingly.
     *
+    * If HTTP\Options, will set from values the passed object
+    * holds.
+    *
+    * If Phouch\Config, will set from configuration data.
+    *
     * If nothing, will assume values as default, or that the
     * user will set options with a setter.
     */
-    public function __construct()
+    public function __construct($options = null)
     {
-        if(func_num_args() > 0){
-            $arg0 = func_get_arg(0);
-            if(is_array($arg0))
-                $this->setWithArray($arg0);
-        }
+        if(is_array($options))
+            $this->setFromArray($options);
+
+        if($options instanceof OptionsAbstract)
+            $this->setFromOptions($options);
+
+        if($options instanceof \Phouch\Config)
+            $this->setFromPhouchConfig($options);
+
         return $this;
     }
 
@@ -49,7 +58,7 @@ abstract class OptionsAbstract
      * @param array $options
      * @return $this
      */
-    public function setWithArray(array $options)
+    public function setFromArray(array $options)
     {
         if(array_key_exists('port', $options))
             $this->setPort($options['port']);
@@ -81,6 +90,22 @@ abstract class OptionsAbstract
             ->setPassword($config->getPassword())
             ->setCertPath($config->getCertificateFilePath());
         
+        return $this;
+    }
+
+    /**
+     * @param OptionsAbstract $options
+     * @return $this
+     */
+    public function setFromOptions(OptionsAbstract $options)
+    {
+        $this->setHost($options->getHost())
+            ->setPort($options->getPort())
+            ->setTransport($options->getTransport())
+            ->setUsername($options->getUsername())
+            ->setPassword($options->getPassword())
+            ->setCertPath($options->getCertPath());
+
         return $this;
     }
 
