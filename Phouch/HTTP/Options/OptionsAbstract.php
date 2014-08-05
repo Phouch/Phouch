@@ -88,6 +88,10 @@ abstract class OptionsAbstract
         return $this;
     }
 
+    /**
+     * @param OptionsAbstract $options
+     * @return $this
+     */
     public function setFromOptions(OptionsAbstract $options)
     {
         $this->setHost($options->getHost())
