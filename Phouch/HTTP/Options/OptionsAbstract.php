@@ -40,6 +40,12 @@ abstract class OptionsAbstract
         if(is_array($options))
             $this->setFromArray($options);
 
+        if($options instanceof OptionsAbstract)
+            $this->setFromOptions($options);
+
+        if($options instanceof \Phouch\Config)
+            $this->setFromPhouchConfig($options);
+
         return $this;
     }
 
@@ -79,6 +85,18 @@ abstract class OptionsAbstract
             ->setPassword($config->getPassword())
             ->setCertPath($config->getCertificateFilePath());
         
+        return $this;
+    }
+
+    public function setFromOptions(OptionsAbstract $options)
+    {
+        $this->setHost($options->getHost())
+            ->setPort($options->getPort())
+            ->setTransport($options->getTransport())
+            ->setUsername($options->getUsername())
+            ->setPassword($options->getPassword())
+            ->setCertPath($options->getCertPath());
+
         return $this;
     }
 
