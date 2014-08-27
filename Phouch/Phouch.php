@@ -43,8 +43,7 @@ class Phouch
     
     public function __construct(array $config_array = null)
     {
-        
-        $base_array = include '/../config/Phouch.php';
+        $base_array = include '../config/Phouch.php';
         
         $this->config = new Config($base_array);
         

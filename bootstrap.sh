@@ -127,11 +127,6 @@ ln -fs /vagrant/example /var/www
 
 echo "-------- Done linking webroot to example folder ------------"
 
-cd /vagrant/example
-composer install
-
-echo "-------- Done doing Composer install -----------"
-
 # Restart apache2
 sudo service apache2 restart
 
