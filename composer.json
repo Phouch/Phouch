@@ -1,5 +1,5 @@
 {
-    "name": "pouch/pouch",
+    "name": "phouch/phouch",
     "description": "CouchDB library for PHP.",
     "keywords": [
         "CouchDB",
