@@ -1,6 +1,7 @@
 composer.lock
 composer.phar
 .idea
+.vagrant
 test.php
 *.swp
 /nbproject
