@@ -1,0 +1,12 @@
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/phouch/phouch"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "phouch/phouch": "dev-master"
+    }
+}
