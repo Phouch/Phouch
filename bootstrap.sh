@@ -116,6 +116,12 @@ composer self-update
 
 echo "-------- Done installing Composer ------------"
 
+composer global require "phpunit/phpunit=4.5.*"
+
+echo "export PATH='$PATH:~/.composer/vendor/bin'" >> /home/vagrant/.profile
+
+echo "-------- Done installing PHPUnit"
+
 # Restart apache2
 sudo service apache2 restart
 

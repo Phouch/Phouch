@@ -1,7 +1,0 @@
-<phpunit bootstrap="../phouch.php">
-  <testsuites>
-    <testsuite name="Phouch PHPUnit">
-      <directory>../tests</directory>
-    </testsuite>
-  </testsuites>
-</phpunit>
